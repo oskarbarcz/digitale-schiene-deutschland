@@ -54,7 +54,6 @@ class Consist
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -71,7 +70,6 @@ class Consist
         if (!$this->engines->contains($engine)) {
             $this->engines[] = $engine;
         }
-
         return $this;
     }
 
@@ -80,7 +78,6 @@ class Consist
         if ($this->engines->contains($engine)) {
             $this->engines->removeElement($engine);
         }
-
         return $this;
     }
 
@@ -97,7 +94,6 @@ class Consist
         if (!$this->cars->contains($car)) {
             $this->cars[] = $car;
         }
-
         return $this;
     }
 
@@ -106,7 +102,6 @@ class Consist
         if ($this->cars->contains($car)) {
             $this->cars->removeElement($car);
         }
-
         return $this;
     }
 }

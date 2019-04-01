@@ -64,7 +64,6 @@ class Car
             $this->consists[] = $consist;
             $consist->addCar($this);
         }
-
         return $this;
     }
 
@@ -74,7 +73,6 @@ class Car
             $this->consists->removeElement($consist);
             $consist->removeCar($this);
         }
-
         return $this;
     }
 }
