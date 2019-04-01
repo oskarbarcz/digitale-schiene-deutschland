@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CarRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RollingStock\ConsistElement\CarRepository")
  */
 class Car
 {

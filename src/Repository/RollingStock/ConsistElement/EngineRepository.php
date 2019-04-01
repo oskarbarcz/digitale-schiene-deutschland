@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\RollingStock\ConsistElement;
 
-use App\Entity\Engine;
+use App\Entity\RollingStock\ConsistElement\Engine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

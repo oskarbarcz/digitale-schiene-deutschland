@@ -1,26 +1,26 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\RollingStock\ConsistElement;
 
-use App\Entity\Consist;
+use App\Entity\RollingStock\ConsistElement\Car;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Consist|null find($id, $lockMode = null, $lockVersion = null)
- * @method Consist|null findOneBy(array $criteria, array $orderBy = null)
- * @method Consist[]    findAll()
- * @method Consist[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Car|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Car|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Car[]    findAll()
+ * @method Car[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConsistRepository extends ServiceEntityRepository
+class CarRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Consist::class);
+        parent::__construct($registry, Car::class);
     }
 
     // /**
-    //  * @return Consist[] Returns an array of Consist objects
+    //  * @return Car[] Returns an array of Car objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ConsistRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Consist
+    public function findOneBySomeField($value): ?Car
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
