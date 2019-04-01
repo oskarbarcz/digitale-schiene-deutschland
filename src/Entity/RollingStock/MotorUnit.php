@@ -2,8 +2,6 @@
 
 namespace App\Entity\RollingStock;
 
-use App\Entity\Abstracts\ConsistInterface;
-use App\Entity\Abstracts\UnifiedConsistInterface;
 use App\Entity\Explicit\Carrier;
 use App\Entity\Explicit\Producer;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RollingStock\MotorUnitRepository")
  */
-class MotorUnit implements UnifiedConsistInterface, ConsistInterface
+class MotorUnit
 {
     /**
      * @ORM\Id()
