@@ -36,6 +36,11 @@ class Car
      */
     private $producer;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $maxPermittedSpeed;
+
     public function __construct()
     {
         $this->consists = new ArrayCollection();
@@ -91,6 +96,18 @@ class Car
     public function setProducer(?Producer $producer): self
     {
         $this->producer = $producer;
+
+        return $this;
+    }
+
+    public function getMaxPermittedSpeed(): ?int
+    {
+        return $this->maxPermittedSpeed;
+    }
+
+    public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
+    {
+        $this->maxPermittedSpeed = $maxPermittedSpeed;
 
         return $this;
     }

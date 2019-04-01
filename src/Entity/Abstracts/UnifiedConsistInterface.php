@@ -2,7 +2,7 @@
 
 namespace App\Entity\Abstracts;
 
-interface PreparedConsistInterface
+interface UnifiedConsistInterface
 {
     /**
      * @return int total weight in kilograms
