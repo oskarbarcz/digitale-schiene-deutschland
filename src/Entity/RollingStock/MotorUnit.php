@@ -2,6 +2,8 @@
 
 namespace App\Entity\RollingStock;
 
+use App\Entity\Abstracts\ConsistInterface;
+use App\Entity\Abstracts\UnifiedConsistInterface;
 use App\Entity\Explicit\Carrier;
 use App\Entity\Explicit\Producer;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RollingStock\MotorUnitRepository")
  */
-class MotorUnit
+class MotorUnit implements UnifiedConsistInterface, ConsistInterface
 {
     /**
      * @ORM\Id()
@@ -37,6 +39,26 @@ class MotorUnit
      * @ORM\Column(type="integer")
      */
     private $maxPermittedSpeed;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $seatsCount;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $totalLength;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $continuousOutput;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $totalWeight;
 
     public function getId(): ?int
     {
@@ -86,6 +108,67 @@ class MotorUnit
     public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
     {
         $this->maxPermittedSpeed = $maxPermittedSpeed;
+
+        return $this;
+    }
+
+    /**
+     * @return int total weight in kilograms
+     */
+    public function getTotalWeight(): int
+    {
+        return $this->totalWeight;
+
+    }
+
+    /**
+     * @return float total weight in meters
+     */
+    public function getTotalLength(): float
+    {
+        return $this->totalLength;
+    }
+
+    /**
+     * @return int seats in all cars/wagons
+     */
+    public function getSeatsCount(): int
+    {
+        return $this->seatsCount;
+    }
+
+    /**
+     * @return int continuous output in megawats
+     */
+    public function getContinuousOutput(): int
+    {
+        return $this->continuousOutput;
+    }
+
+    public function setSeatsCount(int $seatsCount): self
+    {
+        $this->seatsCount = $seatsCount;
+
+        return $this;
+    }
+
+    public function setTotalLength(int $totalLength): self
+    {
+        $this->totalLength = $totalLength;
+
+        return $this;
+    }
+
+    public function setContinuousOutput(int $continuousOutput): self
+    {
+        $this->continuousOutput = $continuousOutput;
+
+        return $this;
+    }
+
+    public function setTotalWeight(int $totalWeight): self
+    {
+        $this->totalWeight = $totalWeight;
 
         return $this;
     }

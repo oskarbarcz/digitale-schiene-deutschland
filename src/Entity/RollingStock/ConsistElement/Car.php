@@ -41,6 +41,21 @@ class Car
      */
     private $maxPermittedSpeed;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $seatsCount;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $length;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $weight;
+
     public function __construct()
     {
         $this->consists = new ArrayCollection();
@@ -108,6 +123,42 @@ class Car
     public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
     {
         $this->maxPermittedSpeed = $maxPermittedSpeed;
+
+        return $this;
+    }
+
+    public function getSeatsCount(): ?int
+    {
+        return $this->seatsCount;
+    }
+
+    public function setSeatsCount(int $seatsCount): self
+    {
+        $this->seatsCount = $seatsCount;
+
+        return $this;
+    }
+
+    public function getLength(): ?float
+    {
+        return $this->length;
+    }
+
+    public function setLength(float $length): self
+    {
+        $this->length = $length;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight): self
+    {
+        $this->weight = $weight;
 
         return $this;
     }

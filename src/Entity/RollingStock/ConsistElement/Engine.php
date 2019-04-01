@@ -48,6 +48,21 @@ class Engine
      */
     private $maxPermittedSpeed;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $continuousOutput;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $length;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $weight;
+
     public function __construct()
     {
         $this->consists = new ArrayCollection();
@@ -127,6 +142,42 @@ class Engine
     public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
     {
         $this->maxPermittedSpeed = $maxPermittedSpeed;
+        return $this;
+    }
+
+    public function getContinuousOutput(): ?int
+    {
+        return $this->continuousOutput;
+    }
+
+    public function setContinuousOutput(int $continuousOutput): self
+    {
+        $this->continuousOutput = $continuousOutput;
+
+        return $this;
+    }
+
+    public function getLength(): ?float
+    {
+        return $this->length;
+    }
+
+    public function setLength(float $length): self
+    {
+        $this->length = $length;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight): self
+    {
+        $this->weight = $weight;
+
         return $this;
     }
 }

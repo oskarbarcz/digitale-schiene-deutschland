@@ -3,7 +3,6 @@
 namespace App\Entity\Abstracts;
 
 use App\Entity\Explicit\Carrier;
-use App\Entity\Explicit\Producer;
 
 interface ConsistInterface
 {
@@ -15,7 +14,7 @@ interface ConsistInterface
     /**
      * @return string consist name
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
      * @return Carrier
@@ -23,12 +22,7 @@ interface ConsistInterface
     public function getCarrier(): ?Carrier;
 
     /**
-     * @return Producer
-     */
-    public function getProducer(): ?Producer;
-
-    /**
      * @return int continuous output in megawats
      */
-    public function getContinuousOutput(): int;
+    public function getContinuousOutput(): ?int;
 }
