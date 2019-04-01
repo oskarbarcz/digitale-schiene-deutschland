@@ -2,6 +2,10 @@
 
 namespace App\Entity\Explicit;
 
+use App\Entity\RollingStock\ConsistElement\Engine;
+use App\Entity\RollingStock\MotorUnit;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,7 +25,7 @@ class Carrier
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $fullName;
 
     /**
      * @ORM\Column(type="string", length=16, nullable=true)
@@ -48,19 +52,35 @@ class Carrier
      */
     private $shortcode;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RollingStock\ConsistElement\Engine", mappedBy="carrier")
+     */
+    private $engines;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RollingStock\MotorUnit", mappedBy="carrier")
+     */
+    private $motorUnits;
+
+    public function __construct()
+    {
+        $this->engines = new ArrayCollection();
+        $this->motorUnits = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getFullName(): ?string
     {
-        return $this->name;
+        return $this->fullName;
     }
 
-    public function setName(string $name): self
+    public function setFullName(string $fullName): self
     {
-        $this->name = $name;
+        $this->fullName = $fullName;
 
         return $this;
     }
@@ -121,6 +141,68 @@ class Carrier
     public function setShortcode(string $shortcode): self
     {
         $this->shortcode = $shortcode;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Engine[]
+     */
+    public function getEngines(): Collection
+    {
+        return $this->engines;
+    }
+
+    public function addEngine(Engine $engine): self
+    {
+        if (!$this->engines->contains($engine)) {
+            $this->engines[] = $engine;
+            $engine->setCarrier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEngine(Engine $engine): self
+    {
+        if ($this->engines->contains($engine)) {
+            $this->engines->removeElement($engine);
+            // set the owning side to null (unless already changed)
+            if ($engine->getCarrier() === $this) {
+                $engine->setCarrier(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MotorUnit[]
+     */
+    public function getMotorUnits(): Collection
+    {
+        return $this->motorUnits;
+    }
+
+    public function addMotorUnit(MotorUnit $motorUnit): self
+    {
+        if (!$this->motorUnits->contains($motorUnit)) {
+            $this->motorUnits[] = $motorUnit;
+            $motorUnit->setCarrier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMotorUnit(MotorUnit $motorUnit): self
+    {
+        if ($this->motorUnits->contains($motorUnit)) {
+            $this->motorUnits->removeElement($motorUnit);
+            // set the owning side to null (unless already changed)
+            if ($motorUnit->getCarrier() === $this) {
+                $motorUnit->setCarrier(null);
+            }
+        }
 
         return $this;
     }

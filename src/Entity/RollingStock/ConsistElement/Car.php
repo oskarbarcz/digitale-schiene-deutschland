@@ -2,6 +2,7 @@
 
 namespace App\Entity\RollingStock\ConsistElement;
 
+use App\Entity\Explicit\Producer;
 use App\Entity\RollingStock\Consist;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -28,6 +29,12 @@ class Car
      * @ORM\ManyToMany(targetEntity="App\Entity\RollingStock\Consist", mappedBy="cars")
      */
     private $consists;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\Producer", inversedBy="cars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $producer;
 
     public function __construct()
     {
@@ -73,6 +80,18 @@ class Car
             $this->consists->removeElement($consist);
             $consist->removeCar($this);
         }
+        return $this;
+    }
+
+    public function getProducer(): ?Producer
+    {
+        return $this->producer;
+    }
+
+    public function setProducer(?Producer $producer): self
+    {
+        $this->producer = $producer;
+
         return $this;
     }
 }

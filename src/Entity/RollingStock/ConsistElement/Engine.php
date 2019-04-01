@@ -2,6 +2,8 @@
 
 namespace App\Entity\RollingStock\ConsistElement;
 
+use App\Entity\Explicit\Carrier;
+use App\Entity\Explicit\Producer;
 use App\Entity\RollingStock\Consist;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -28,6 +30,18 @@ class Engine
      * @ORM\ManyToMany(targetEntity="App\Entity\RollingStock\Consist", mappedBy="engines")
      */
     private $consists;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\Carrier", inversedBy="engines")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $carrier;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\Producer", inversedBy="engines")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $producer;
 
     public function __construct()
     {
@@ -74,6 +88,30 @@ class Engine
             $this->consists->removeElement($consist);
             $consist->removeEngine($this);
         }
+        return $this;
+    }
+
+    public function getCarrier(): ?Carrier
+    {
+        return $this->carrier;
+    }
+
+    public function setCarrier(?Carrier $carrier): self
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    public function getProducer(): ?Producer
+    {
+        return $this->producer;
+    }
+
+    public function setProducer(?Producer $producer): self
+    {
+        $this->producer = $producer;
+
         return $this;
     }
 }
