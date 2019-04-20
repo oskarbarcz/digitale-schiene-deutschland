@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * Representation of all track objects
+ *
  * @JMS\ExclusionPolicy("none")
  * @ORM\Entity(repositoryClass="App\Repository\Explicit\TrackObjectTypeRepository")
  */
@@ -23,12 +26,24 @@ class TrackObjectType
     private $id;
 
     /**
+     * @Assert\NotBlank(message="types.name.not-blank")
+     * @Assert\Length(
+     *     min="5",
+     *     minMessage="types.name.too-short",
+     *     max="255",
+     *     maxMessage="types.name.too-long")
      * @JMS\Type("string")
      * @ORM\Column(type="string", length=32)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank(message="types.styleClass.not-blank")
+     * @Assert\Length(
+     *     min="5",
+     *     minMessage="types.styleClass.too-short",
+     *     max="255",
+     *     maxMessage="types.styleClass.too-long")
      * @JMS\SerializedName("cssClass")
      * @JMS\Type("string")
      * @ORM\Column(type="string", length=255)
