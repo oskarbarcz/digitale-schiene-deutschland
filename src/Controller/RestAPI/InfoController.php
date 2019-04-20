@@ -17,7 +17,7 @@ class InfoController extends AbstractFOSRestController
 {
     /**
      * @Rest\View
-     * @Rest\Route('/api/info')
+     * @Rest\Route("/api/info")
      */
     public function info()
     {

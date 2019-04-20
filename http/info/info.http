@@ -1,0 +1,5 @@
+GET localhost:8000/api/info
+Accept: application/json
+Cache-Control: no-cache
+
+###
