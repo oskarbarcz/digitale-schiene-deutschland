@@ -85,4 +85,84 @@ class RailVehicle
 
         return $vehicle;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return Carrier
+     */
+    public function getCarrier(): Carrier
+    {
+        return $this->carrier;
+    }
+
+    /**
+     * @param Carrier $carrier
+     */
+    public function setCarrier(Carrier $carrier): void
+    {
+        $this->carrier = $carrier;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalLength(): float
+    {
+        return $this->totalLength;
+    }
+
+    /**
+     * @param float $totalLength
+     */
+    public function setTotalLength(float $totalLength): void
+    {
+        $this->totalLength = $totalLength;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalWeight(): int
+    {
+        return $this->totalWeight;
+    }
+
+    /**
+     * @param int $totalWeight
+     */
+    public function setTotalWeight(int $totalWeight): void
+    {
+        $this->totalWeight = $totalWeight;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxPermittedSpeed(): int
+    {
+        return $this->maxPermittedSpeed;
+    }
+
+    /**
+     * @param int $maxPermittedSpeed
+     */
+    public function setMaxPermittedSpeed(int $maxPermittedSpeed): void
+    {
+        $this->maxPermittedSpeed = $maxPermittedSpeed;
+    }
 }
