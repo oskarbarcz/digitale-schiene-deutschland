@@ -40,6 +40,12 @@ class TrackObject
      */
     private $station;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Route", inversedBy="trackObjects")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $route;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +95,18 @@ class TrackObject
     public function setStation(?Station $station): self
     {
         $this->station = $station;
+
+        return $this;
+    }
+
+    public function getRoute(): ?Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?Route $route): self
+    {
+        $this->route = $route;
 
         return $this;
     }
