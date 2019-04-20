@@ -30,6 +30,8 @@ class TrackObjectTypesController extends AbstractFOSRestController
 
     /** @var ValidatorInterface */
     protected $validator;
+    /** @var SerializerInterface */
+    protected $serializer;
 
     /**
      * Assigns data from arguments as class fields
@@ -37,15 +39,18 @@ class TrackObjectTypesController extends AbstractFOSRestController
      * @param TrackObjectTypeService $trackObjectTypeService
      * @param EntityManagerInterface $entityManager
      * @param ValidatorInterface     $validator
+     * @param SerializerInterface    $serializer
      */
     public function __construct(
         TrackObjectTypeService $trackObjectTypeService,
         EntityManagerInterface $entityManager,
-        ValidatorInterface $validator
+        ValidatorInterface $validator,
+        SerializerInterface $serializer
     ) {
         $this->trackObjectTypeService = $trackObjectTypeService;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -72,19 +77,20 @@ class TrackObjectTypesController extends AbstractFOSRestController
     }
 
     /**
+     * Adds a track object type
+     *
      * @Rest\View()
      * @Rest\Post("/api/track-object-types", name="api__track-object-type_add")
-     * @param Request             $request
-     * @param SerializerInterface $serializer
+     * @param Request $request
      * @return View
      */
-    public function add(Request $request, SerializerInterface $serializer): View
+    public function add(Request $request): View
     {
         // get from request
         $json = $request->getContent();
 
         /** @var TrackObjectType $type */
-        $type = $serializer->deserialize($json, TrackObjectType::class, 'json');
+        $type = $this->serializer->deserialize($json, TrackObjectType::class, 'json');
 
         $this->validator->validate($type);
 
@@ -98,14 +104,49 @@ class TrackObjectTypesController extends AbstractFOSRestController
     }
 
     /**
+     * Edits track object type
+     *
      * @Rest\View()
      * @Rest\Patch("/api/track-object-types/{id}", name="api__track-object-type_edit")
-     * @param TrackObjectType $trackObjectType
+     * @param Request         $request
+     * @param TrackObjectType $oldType
+     * @return View
      */
-    public function edit(TrackObjectType $trackObjectType): void
+    public function edit(Request $request, TrackObjectType $oldType): View
     {
-        print_r($trackObjectType);
-        die;
+        // get from request
+        $json = $request->getContent();
+
+        /** @var TrackObjectType $updated */
+        $updated = $this->serializer->deserialize($json, TrackObjectType::class, 'json');
+
+        $oldType->setName($updated->getName())
+                ->setStyleClass($updated->getStyleClass());
+
+        $this->validator->validate($oldType);
+
+        $this->entityManager->persist($oldType);
+        $this->entityManager->flush();
+
+        // return with location header
+        return View::create($oldType, 200, [
+            'Location' => $this->generateUrl('api__track-object-type_get-one', ['id' => $oldType->getId()]),
+        ]);
+    }
+
+    /**
+     * Deletes the track object type
+     *
+     * @Rest\View()
+     * @Rest\Delete("/api/track-object-types/{id}", name="api__track-object-type_delete")
+     * @param int $id
+     * @return View
+     * @throws NotFound
+     */
+    public function delete(int $id): View
+    {
+        $this->trackObjectTypeService->delete($id);
+        return View::create();
     }
 }
 

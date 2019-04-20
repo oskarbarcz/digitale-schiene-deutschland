@@ -1,0 +1,7 @@
+PATCH http://localhost:8000/api/track-object-types/26
+Accept: */*
+Cache-Control: no-cache
+
+{"name": "Foreign infrastructure", "cssClass": "--infr-foreign" }
+
+###
