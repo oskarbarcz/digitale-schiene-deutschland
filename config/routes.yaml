@@ -5,3 +5,8 @@ api:
   type: rest  # Required for ``RestYamlLoader`` to process imported routes
   prefix: /api
   resource: App\Controller\RestAPI\TrackObjectTypesController
+
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

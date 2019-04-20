@@ -6,6 +6,7 @@ namespace App\Controller\RestAPI;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
+use Swagger\Annotations as SWG;
 use function getenv;
 
 /**
@@ -17,7 +18,11 @@ class InfoController extends AbstractFOSRestController
 {
     /**
      * @Rest\View
-     * @Rest\Route("/api/info")
+     * @Rest\Get("/api/info")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Shows basic API info"
+     * )
      */
     public function info()
     {
