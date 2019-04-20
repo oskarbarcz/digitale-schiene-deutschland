@@ -1,0 +1,7 @@
+POST http://localhost:8000/api/track-object-types
+Accept: */*
+Cache-Control: no-cache
+
+{"id": 20, "name": "All other stations21", "cssClass": "--station" }
+
+###
