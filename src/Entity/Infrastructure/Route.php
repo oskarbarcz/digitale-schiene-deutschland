@@ -36,6 +36,11 @@ class Route
      */
     private $length;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $maxPermittedSpeed;
+
     public function __construct()
     {
     }
@@ -89,6 +94,18 @@ class Route
     public function setLength(int $length): self
     {
         $this->length = $length;
+
+        return $this;
+    }
+
+    public function getMaxPermittedSpeed(): ?int
+    {
+        return $this->maxPermittedSpeed;
+    }
+
+    public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
+    {
+        $this->maxPermittedSpeed = $maxPermittedSpeed;
 
         return $this;
     }

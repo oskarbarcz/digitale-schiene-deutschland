@@ -14,6 +14,7 @@ class RouteFixtures extends Fixture
         $route = new Route();
         $route->setName('Riedbahn')
               ->setKbs(655)
+              ->setMaxPermittedSpeed(280)
               ->setLength(74800)
               ->setStationsName('Frankfurt Hbf - Karlsruhe Hbf');
         $manager->persist($route);
@@ -21,6 +22,7 @@ class RouteFixtures extends Fixture
         $route = new Route();
         $route->setName('Berlin - Leipzig')
               ->setKbs(250)
+              ->setMaxPermittedSpeed(200)
               ->setLength(161600)
               ->setStationsName('Berlin Gesundbrunnen - Leipzig Hbf');
         $manager->persist($route);
@@ -28,6 +30,7 @@ class RouteFixtures extends Fixture
         $route = new Route();
         $route->setName('Munchen - Garmisch')
               ->setKbs(5504)
+              ->setMaxPermittedSpeed(160)
               ->setLength(100600)
               ->setStationsName('Munchen Hbf - Garmisch-Partenkirchen');
         $manager->persist($route);
