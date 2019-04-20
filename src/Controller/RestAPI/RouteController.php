@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  *
  * @package App\Controller\RestAPI
  */
-class TrackObjectController extends AbstractController
+class RouteController extends AbstractController
 {
     public function __construct() { }
 
@@ -18,7 +18,7 @@ class TrackObjectController extends AbstractController
      * @Rest\View()
      * @Rest\Get("", name="")
      */
-    public function getForRoute()
+    public function get()
     {
 
     }
