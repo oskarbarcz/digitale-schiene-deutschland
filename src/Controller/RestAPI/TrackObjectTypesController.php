@@ -4,11 +4,11 @@
 namespace App\Controller\RestAPI;
 
 
+use App\Exceptions\NotFound\TrackObjectTypeNotFoundException as NotFound;
 use App\Services\EntityServices\TrackObjectTypeService;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
-use JMS\Serializer\SerializerInterface;
 
 /**
  * TrackObjectController
@@ -19,19 +19,15 @@ class TrackObjectTypesController extends AbstractFOSRestController
 {
     /** @var TrackObjectTypeService */
     protected $trackObjectTypeService;
-    /** @var SerializerInterface */
-    protected $serializer;
 
     /**
      * Assigns data from arguments as class fields
      *
      * @param TrackObjectTypeService $trackObjectTypeService
-     * @param SerializerInterface    $serializer
      */
-    public function __construct(TrackObjectTypeService $trackObjectTypeService, SerializerInterface $serializer)
+    public function __construct(TrackObjectTypeService $trackObjectTypeService)
     {
         $this->trackObjectTypeService = $trackObjectTypeService;
-        $this->serializer = $serializer;
     }
 
     /**
@@ -49,10 +45,12 @@ class TrackObjectTypesController extends AbstractFOSRestController
      * @return View
      * @Rest\View()
      * @Rest\Get("/api/track-object-types/{id}")
+     * @throws NotFound
      */
     public function getOne(int $id): View
     {
-
+        $type = $this->trackObjectTypeService->get($id);
+        return View::create($type);
     }
 }
 

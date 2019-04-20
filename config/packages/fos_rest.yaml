@@ -7,7 +7,8 @@ fos_rest:
     view_response_listener:  true
   exception:
     enabled: true
-    codes: ~
+    codes:
+      App\Exceptions\NotFound\TrackObjectTypeNotFoundException: 404
     messages: ~
   format_listener:
     rules:
