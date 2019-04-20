@@ -7,10 +7,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 use Swagger\Annotations as SWG;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @JMS\ExclusionPolicy("none")
+ * @UniqueEntity(fields={"kbs"}, message="route.already-exists")
  * @ORM\Entity(repositoryClass="App\Repository\Infrastructure\RouteRepository")
  */
 class Route
@@ -58,11 +60,11 @@ class Route
      * @SWG\Property(
      *     description="Total line length in meters",
      *     minimum="100",
-     *     maximum="100000"
+     *     maximum="1000000"
      * )
      * @Assert\NotNull(message="route.length.not-null")
      * @Assert\GreaterThan(value="100", message="route.length.too-short")
-     * @Assert\LessThan(value="100000", message="route.length.too-long")
+     * @Assert\LessThan(value="1000000", message="route.length.too-long")
      * @ORM\Column(type="integer")
      */
     private $length;
@@ -74,8 +76,8 @@ class Route
      *     maximum="320"
      * )
      * @Assert\NotNull(message="route.max-speed.not-null")
-     * @Assert\GreaterThan(value="10", message="route.max-speed.too-low")
-     * @Assert\LessThan(value="320", message="route.max-speed.too-high")
+     * @Assert\GreaterThanOrEqual(value="10", message="route.max-speed.too-low")
+     * @Assert\LessThanOrEqual(value="320", message="route.max-speed.too-high")
      * @ORM\Column(type="integer")
      */
     private $maxPermittedSpeed;
@@ -101,7 +103,7 @@ class Route
         return $this->kbs;
     }
 
-    public function setKbs(int $kbs): self
+    public function setKbs(?int $kbs): self
     {
         $this->kbs = $kbs;
 
@@ -125,7 +127,7 @@ class Route
         return $this->stationsName;
     }
 
-    public function setStationsName(string $stationsName): self
+    public function setStationsName(?string $stationsName): self
     {
         $this->stationsName = $stationsName;
 
@@ -137,7 +139,7 @@ class Route
         return $this->length;
     }
 
-    public function setLength(int $length): self
+    public function setLength(?int $length): self
     {
         $this->length = $length;
 
@@ -149,7 +151,7 @@ class Route
         return $this->maxPermittedSpeed;
     }
 
-    public function setMaxPermittedSpeed(int $maxPermittedSpeed): self
+    public function setMaxPermittedSpeed(?int $maxPermittedSpeed): self
     {
         $this->maxPermittedSpeed = $maxPermittedSpeed;
 

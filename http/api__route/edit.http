@@ -1,0 +1,7 @@
+PATCH http://localhost:8000/api/route/250
+Accept: */*
+Cache-Control: no-cache
+
+{"kbs": 250,  "name": "Foreign infrastructure",  "stations_name": "Berlin Chabrunnen - Leipzig Hbf",  "length": 161600,  "max_permitted_speed": 350 }
+
+###

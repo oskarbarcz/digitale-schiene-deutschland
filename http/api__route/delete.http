@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/route/250
+DELETE http://localhost:8000/api/route/252
 Accept: application/json
 Cache-Control: no-cache
 

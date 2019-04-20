@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/route/250
+GET http://localhost:8000/api/route/all
 Accept: application/json
 Cache-Control: no-cache
 

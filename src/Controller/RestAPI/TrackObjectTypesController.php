@@ -4,11 +4,11 @@
 namespace App\Controller\RestAPI;
 
 
+use App\Controller\Abstracts\AbstractValidatorFOSRestController;
 use App\Entity\Explicit\TrackObjectType;
 use App\Exceptions\NotFound\TrackObjectTypeNotFoundException as NotFound;
 use App\Services\EntityServices\TrackObjectTypeService;
 use Doctrine\ORM\EntityManagerInterface;
-use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializerInterface;
@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  *
  * @package App\Controller\RestAPI
  */
-class TrackObjectTypesController extends AbstractFOSRestController
+class TrackObjectTypesController extends AbstractValidatorFOSRestController
 {
     /** @var TrackObjectTypeService */
     protected $trackObjectTypeService;
@@ -30,8 +30,6 @@ class TrackObjectTypesController extends AbstractFOSRestController
     /** @var EntityManagerInterface */
     protected $entityManager;
 
-    /** @var ValidatorInterface */
-    protected $validator;
     /** @var SerializerInterface */
     protected $serializer;
 
@@ -49,9 +47,9 @@ class TrackObjectTypesController extends AbstractFOSRestController
         ValidatorInterface $validator,
         SerializerInterface $serializer
     ) {
+        parent::__construct($validator);
         $this->trackObjectTypeService = $trackObjectTypeService;
         $this->entityManager = $entityManager;
-        $this->validator = $validator;
         $this->serializer = $serializer;
     }
 
@@ -120,7 +118,11 @@ class TrackObjectTypesController extends AbstractFOSRestController
         /** @var TrackObjectType $type */
         $type = $this->serializer->deserialize($json, TrackObjectType::class, 'json');
 
-        $this->validator->validate($type);
+        // run validator over entity
+        $valid = $this->validate($type);
+        if ($valid) {
+            return View::create($valid, 400);
+        }
 
         $this->entityManager->persist($type);
         $this->entityManager->flush();
@@ -156,7 +158,11 @@ class TrackObjectTypesController extends AbstractFOSRestController
         $oldType->setName($updated->getName())
                 ->setStyleClass($updated->getStyleClass());
 
-        $this->validator->validate($oldType);
+        // run validator over entity
+        $valid = $this->validate($oldType);
+        if ($valid) {
+            return View::create($valid, 400);
+        }
 
         $this->entityManager->persist($oldType);
         $this->entityManager->flush();

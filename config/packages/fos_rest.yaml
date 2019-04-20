@@ -9,6 +9,7 @@ fos_rest:
     enabled: true
     codes:
       App\Exceptions\NotFound\TrackObjectTypeNotFoundException: 404
+      App\Exceptions\NotFound\RouteNotFoundException: 404
     messages: ~
   format_listener:
     rules:
