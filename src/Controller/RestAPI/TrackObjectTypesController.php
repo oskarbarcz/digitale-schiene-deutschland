@@ -9,6 +9,7 @@ use App\Services\EntityServices\TrackObjectTypeService;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * TrackObjectController
@@ -32,7 +33,7 @@ class TrackObjectTypesController extends AbstractFOSRestController
 
     /**
      * @Rest\View()
-     * @Rest\Get("/api/track-object-types/all")
+     * @Rest\Get("/api/track-object-types/all", name="api__track-object-type_get-all")
      */
     public function getAll(): View
     {
@@ -44,13 +45,31 @@ class TrackObjectTypesController extends AbstractFOSRestController
      * @param int $id
      * @return View
      * @Rest\View()
-     * @Rest\Get("/api/track-object-types/{id}")
+     * @Rest\Get("/api/track-object-types/{id}", name="api__track-object-type_get-one")
      * @throws NotFound
      */
     public function getOne(int $id): View
     {
         $type = $this->trackObjectTypeService->get($id);
         return View::create($type);
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Post("/api/track-object-types", name="api__track-object-type_add")
+     * @param Request $request
+     * @return View
+     */
+    public function add(Request $request): View
+    {
+        // get from request
+        $name = $request->get('name');
+        $styleClass = $request->get('cssClass');
+
+        $data = $this->trackObjectTypeService->add($name, $styleClass);
+
+        // after success redirect to get one path
+        return View::createRouteRedirect('api__track-object-type_get-one', ['id' => $data->getId()]);
     }
 }
 
