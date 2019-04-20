@@ -31,6 +31,11 @@ class Route
      */
     private $stationsName;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $length;
+
     public function __construct()
     {
     }
@@ -72,6 +77,18 @@ class Route
     public function setStationsName(string $stationsName): self
     {
         $this->stationsName = $stationsName;
+
+        return $this;
+    }
+
+    public function getLength(): ?int
+    {
+        return $this->length;
+    }
+
+    public function setLength(int $length): self
+    {
+        $this->length = $length;
 
         return $this;
     }
