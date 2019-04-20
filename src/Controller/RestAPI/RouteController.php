@@ -18,7 +18,7 @@ class RouteController extends AbstractController
      * @Rest\View()
      * @Rest\Get("", name="")
      */
-    public function get()
+    public function getOne(): void
     {
 
     }

@@ -1,11 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-api:
-  type: rest  # Required for ``RestYamlLoader`` to process imported routes
-  prefix: /api
-  resource: App\Controller\RestAPI\TrackObjectTypesController
-
 app.swagger_ui:
   path: /api/doc
   methods: GET

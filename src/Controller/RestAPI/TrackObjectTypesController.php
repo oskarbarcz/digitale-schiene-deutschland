@@ -12,11 +12,13 @@ use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use JMS\Serializer\SerializerInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * TrackObjectController
+ * TrackObjectType related actions
  *
  * @package App\Controller\RestAPI
  */
@@ -54,6 +56,13 @@ class TrackObjectTypesController extends AbstractFOSRestController
     }
 
     /**
+     * Returns all TrackObjectType collection
+     *
+     * @SWG\Tag(name="TrackObjectType")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returns all registered track object types."
+     * )
      * @Rest\View()
      * @Rest\Get("/api/track-object-types/all", name="api__track-object-type_get-all")
      */
@@ -64,10 +73,24 @@ class TrackObjectTypesController extends AbstractFOSRestController
     }
 
     /**
-     * @param int $id
-     * @return View
+     * Returns TrackObjectType by ID
+     *
+     * @SWG\Tag(name="TrackObjectType")
+     * @SWG\Parameter(
+     *     in="path",
+     *     type="integer",
+     *     name="Unique identifer"
+     * )
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns TrackObjectType by ID.",
+     *     @Model(type=TrackObjectType::class)
+     * )
      * @Rest\View()
      * @Rest\Get("/api/track-object-types/{id}", name="api__track-object-type_get-one")
+     *
+     * @param int $id
+     * @return View
      * @throws NotFound
      */
     public function getOne(int $id): View
@@ -79,6 +102,11 @@ class TrackObjectTypesController extends AbstractFOSRestController
     /**
      * Adds a track object type
      *
+     * @SWG\Tag(name="TrackObjectType")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returns all registered track object types."
+     * )
      * @Rest\View()
      * @Rest\Post("/api/track-object-types", name="api__track-object-type_add")
      * @param Request $request
@@ -106,6 +134,11 @@ class TrackObjectTypesController extends AbstractFOSRestController
     /**
      * Edits track object type
      *
+     * @SWG\Tag(name="TrackObjectType")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returns all registered track object types."
+     * )
      * @Rest\View()
      * @Rest\Patch("/api/track-object-types/{id}", name="api__track-object-type_edit")
      * @param Request         $request
@@ -137,8 +170,14 @@ class TrackObjectTypesController extends AbstractFOSRestController
     /**
      * Deletes the track object type
      *
+     * @SWG\Tag(name="TrackObjectType")
+     * @SWG\Response(
+     *     response="204",
+     *     description="Deletes selected track object type"
+     * )
      * @Rest\View()
      * @Rest\Delete("/api/track-object-types/{id}", name="api__track-object-type_delete")
+     *
      * @param int $id
      * @return View
      * @throws NotFound
