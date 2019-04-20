@@ -4,8 +4,10 @@ namespace App\Entity\Infrastructure;
 
 use App\Entity\Explicit\TrackObjectType;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
+ * @JMS\ExclusionPolicy("none")
  * @ORM\Entity(repositoryClass="App\Repository\Infrastructure\TrackObjectRepository")
  */
 class TrackObject

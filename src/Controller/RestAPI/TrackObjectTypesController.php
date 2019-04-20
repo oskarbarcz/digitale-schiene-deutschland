@@ -4,18 +4,53 @@
 namespace App\Controller\RestAPI;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Services\EntityServices\TrackObjectTypeService;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\View\View;
+use JMS\Serializer\SerializerInterface;
 
 /**
  * TrackObjectController
  *
  * @package App\Controller\RestAPI
  */
-class TrackObjectTypesController extends AbstractController
+class TrackObjectTypesController extends AbstractFOSRestController
 {
-    public function __construct() { }
+    /** @var TrackObjectTypeService */
+    protected $trackObjectTypeService;
+    /** @var SerializerInterface */
+    protected $serializer;
 
-    public function index()
+    /**
+     * Assigns data from arguments as class fields
+     *
+     * @param TrackObjectTypeService $trackObjectTypeService
+     * @param SerializerInterface    $serializer
+     */
+    public function __construct(TrackObjectTypeService $trackObjectTypeService, SerializerInterface $serializer)
+    {
+        $this->trackObjectTypeService = $trackObjectTypeService;
+        $this->serializer = $serializer;
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/api/track-object-types/all")
+     */
+    public function getAll(): View
+    {
+        $types = $this->trackObjectTypeService->getAll();
+        return View::create($types);
+    }
+
+    /**
+     * @param int $id
+     * @return View
+     * @Rest\View()
+     * @Rest\Get("/api/track-object-types/{id}")
+     */
+    public function getOne(int $id): View
     {
 
     }
