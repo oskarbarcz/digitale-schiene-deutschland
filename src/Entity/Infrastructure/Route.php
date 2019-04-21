@@ -71,7 +71,7 @@ class Route
 
     /**
      * @SWG\Property(
-     *     description="Maximum permitted speed on the whole route",
+     *     description="Maximum permitted speed on the whole route in kilometers per hour",
      *     minimum="10",
      *     maximum="320"
      * )

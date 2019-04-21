@@ -53,6 +53,10 @@ class RouteController extends AbstractValidatorFOSRestController
      *     description="Returns all routes from database",
      *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/Route"))
      * )
+     * @SWG\Response(
+     *     response="204",
+     *     description="There's no routes in database"
+     * )
      * @Rest\View()
      * @Rest\Get("/all", name="api__route_get-all")
      * @return View
@@ -71,6 +75,10 @@ class RouteController extends AbstractValidatorFOSRestController
      *     response="200",
      *     description="Returns route by it's KBS",
      *     @Model(type=Route::class)
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Route with given KBS wasn't not found, most likely it doesn't exist"
      * )
      * @SWG\Parameter(
      *     name="kbs",
@@ -91,11 +99,29 @@ class RouteController extends AbstractValidatorFOSRestController
     }
 
     /**
+     * Returns all routes from database
+     *
      * @SWG\Tag(name="Route")
      * @SWG\Response(
      *     response="200",
      *     description="Returns all routes from database",
      *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/Route"))
+     * )
+     * @SWG\Response(
+     *     response="400",
+     *     description="Occures when request does not meet requirements. Contraint violation list is returned.",
+     *     @SWG\Schema(
+     *      type="array",
+     *      @SWG\Items(type="string"),
+     *      example={"Name field value is too long. Use shorter name.", "Route with this KBS already exists."}
+     *     )
+     * )
+     * @SWG\Parameter(
+     *     name="Route",
+     *     in="body",
+     *     type="object",
+     *     @SWG\Schema(ref="#/definitions/Route"),
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Post("", name="api__route_add")
@@ -124,14 +150,43 @@ class RouteController extends AbstractValidatorFOSRestController
     }
 
     /**
+     * Edits route with given data
+     *
      * @SWG\Tag(name="Route")
      * @SWG\Response(
      *     response="200",
-     *     description="Returns all routes from database",
+     *     description="Successfully edited route.",
      *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/Route"))
+     * )
+     * @SWG\Response(
+     *     response="400",
+     *     description="Occures when request does not meet requirements. Contraint violation list is returned.",
+     *     @SWG\Schema(
+     *      type="array",
+     *      @SWG\Items(type="string"),
+     *      example={"Name field value is too long. Use shorter name.", "Route with this KBS already exists."}
+     *     )
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Route with given KBS wasn't not found, most likely it doesn't exist"
+     * )
+     * @SWG\Parameter(
+     *     name="kbs",
+     *     in="path",
+     *     type="integer",
+     *     description="Kursbuchstrecke - German Railways unique line number"
+     * )
+     * @SWG\Parameter(
+     *     name="Route",
+     *     in="body",
+     *     type="object",
+     *     @SWG\Schema(ref="#/definitions/Route"),
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Patch("/{kbs}", name="api__route_edit")
+     *
      * @param Request $request
      * @param Route   $oldRoute
      * @return View
@@ -165,14 +220,22 @@ class RouteController extends AbstractValidatorFOSRestController
     }
 
     /**
+     * Deletes whole route from database
+     *
      * @SWG\Tag(name="Route")
      * @SWG\Response(
      *     response=204,
-     *     description="When route was successfully deleted"
+     *     description="Route was successfully deleted from database"
      * )
      * @SWG\Response(
      *     response="404",
-     *     description="When route wasn't not found"
+     *     description="Route with given KBS wasn't not found, most likely it doesn't exist"
+     * )
+     * @SWG\Parameter(
+     *     name="kbs",
+     *     in="path",
+     *     type="integer",
+     *     description="Kursbuchstrecke - German Railways unique line number"
      * )
      * @Rest\View()
      * @Rest\Delete("/{kbs}", name="api__route_delete")
@@ -186,4 +249,3 @@ class RouteController extends AbstractValidatorFOSRestController
         return View::create();
     }
 }
-
