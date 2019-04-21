@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
+{% block title %}Route list{% endblock %}
 
 {% block body %}
     <div class="wrapper">
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1>Panel title</h1>
+                <h1>Kursbuchstrecke</h1>
+                {% for route in routes %}
+                    <a href="">{{route.stationsName}}</a>
+                {% endfor %}
             </main>
             {% include 'common/footer.html.twig' %}
         </div>
