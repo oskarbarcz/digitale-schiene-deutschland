@@ -145,7 +145,7 @@ class TrackObjectController extends AbstractValidatorFOSRestController
      *     required=true
      * )
      * @Rest\View()
-     * @Rest\Get("/byRoute/{kbs}", requirements={"kbs"="\d+"}, name="api__track-object_by-route")
+     * @Rest\Get("/by-route/{kbs}", requirements={"kbs"="\d+"}, name="api__track-object_by-route")
      * @param Route $route
      * @return View
      */
@@ -166,7 +166,7 @@ class TrackObjectController extends AbstractValidatorFOSRestController
      * @SWG\Response(response="400", description="At least one of entered values has incorrect format.")
      * @SWG\Parameter(
      *     description="Object to add. Remember that you don't need to add full relation objects, type ID and route KBS
-    will be enough.", name="TrackObject", in="body", type="object",
+    will be enough. For station provide only ID too.", name="TrackObject", in="body", type="object",
      *     @SWG\Schema(ref="#/definitions/TrackObject"),
      *     required=true
      * )

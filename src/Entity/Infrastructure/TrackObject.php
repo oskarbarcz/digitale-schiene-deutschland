@@ -51,7 +51,7 @@ class TrackObject
     private $type;
 
     /**
-     * @SWG\Property(description="Route ID that object belongs to.")
+     * @JMS\Exclude()
      * @Assert\NotNull(message="track-object.route.not-null")
      * @Assert\Type(type=Route::class, message="track-object.route.type")
      * @ORM\ManyToOne(
@@ -63,7 +63,6 @@ class TrackObject
     private $route;
 
     /**
-     * @JMS\Exclude()
      * @ORM\OneToOne(
      *     targetEntity="App\Entity\Infrastructure\Station",
      *     inversedBy="trackObject",
