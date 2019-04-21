@@ -59,7 +59,12 @@ class TrackObjectTypesController extends AbstractValidatorFOSRestController
      * @SWG\Tag(name="TrackObjectType")
      * @SWG\Response(
      *     response="200",
-     *     description="Returns all registered track object types."
+     *     description="Returning all types.",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObjectType"))
+     * )
+     * @SWG\Response(
+     *     response="204",
+     *     description="No types were found in database."
      * )
      * @Rest\View()
      * @Rest\Get("/api/track-object-types/all", name="api__track-object-type_get-all")
@@ -74,15 +79,21 @@ class TrackObjectTypesController extends AbstractValidatorFOSRestController
      * Returns TrackObjectType by ID
      *
      * @SWG\Tag(name="TrackObjectType")
-     * @SWG\Parameter(
-     *     in="path",
-     *     type="integer",
-     *     name="Unique identifer"
-     * )
      * @SWG\Response(
      *     response=200,
      *     description="Returns TrackObjectType by ID.",
      *     @Model(type=TrackObjectType::class)
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Track object type with this ID were not found."
+     * )
+     * @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Unique type identifier",
+     *     type="integer",
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Get("/api/track-object-types/{id}", name="api__track-object-type_get-one")
@@ -103,7 +114,19 @@ class TrackObjectTypesController extends AbstractValidatorFOSRestController
      * @SWG\Tag(name="TrackObjectType")
      * @SWG\Response(
      *     response="200",
-     *     description="Returns all registered track object types."
+     *     description="Returns all registered track object types.",
+     *     @Model(type=TrackObjectType::class)
+     * )
+     * @SWG\Response(
+     *     response="400",
+     *     description="At least one of entered values has incorrect format."
+     * )
+     * @SWG\Parameter(
+     *     name="TrackObjectType",
+     *     in="body",
+     *     type="object",
+     * @SWG\Schema(ref="#/definitions/TrackObjectType"),
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Post("/api/track-object-types", name="api__track-object-type_add")
@@ -139,10 +162,33 @@ class TrackObjectTypesController extends AbstractValidatorFOSRestController
      * @SWG\Tag(name="TrackObjectType")
      * @SWG\Response(
      *     response="200",
-     *     description="Returns all registered track object types."
+     *     description="Changes were saved."
+     * )
+     * @SWG\Response(
+     *     response="400",
+     *     description="At least one of entered values has incorrect format."
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Track object type with this ID were not found."
+     * )
+     * @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Unique type identifier",
+     *     type="integer",
+     *     required=true
+     * )
+     * @SWG\Parameter(
+     *     name="TrackObjectType",
+     *     in="body",
+     *     type="object",
+     * @SWG\Schema(ref="#/definitions/TrackObjectType"),
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Patch("/api/track-object-types/{id}", name="api__track-object-type_edit")
+     *
      * @param Request         $request
      * @param TrackObjectType $oldType
      * @return View
@@ -179,7 +225,18 @@ class TrackObjectTypesController extends AbstractValidatorFOSRestController
      * @SWG\Tag(name="TrackObjectType")
      * @SWG\Response(
      *     response="204",
-     *     description="Deletes selected track object type"
+     *     description="Track object type deleted successfully"
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Track object type with this ID were not found."
+     * )
+     * @SWG\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="Unique type identifier",
+     *     type="integer",
+     *     required=true
      * )
      * @Rest\View()
      * @Rest\Delete("/api/track-object-types/{id}", name="api__track-object-type_delete")
