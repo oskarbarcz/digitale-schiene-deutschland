@@ -14,6 +14,6 @@ fos_rest:
       LogicException: false
   format_listener:
     rules:
-      priorities: [json]
-      fallback_format: json
+      priorities: [json, html]
+      fallback_format: json, html
       prefer_extension: true

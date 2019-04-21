@@ -143,11 +143,11 @@ class TrackObject
 
     /**
      * @JMS\Expose()
-     * @JMS\VirtualProperty(name="routeId")
+     * @JMS\VirtualProperty(name="routeKbs")
      * @return int|null
      */
-    public function getRouteId(): ?int
+    public function getRouteKbs(): ?int
     {
-        return $this->route->getId();
+        return $this->route->getKbs();
     }
 }

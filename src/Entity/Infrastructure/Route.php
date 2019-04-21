@@ -88,16 +88,9 @@ class Route
      */
     private $trackObjects;
 
-    /**
-     * @JMS\Exclude()
-     * @ORM\OneToMany(targetEntity="App\Entity\Infrastructure\Station", mappedBy="route", orphanRemoval=true)
-     */
-    private $stations;
-
     public function __construct()
     {
         $this->trackObjects = new ArrayCollection();
-        $this->stations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -199,36 +192,5 @@ class Route
     public function __toString()
     {
         return $this->id . ' ' . $this->name;
-    }
-
-    /**
-     * @return Collection|Station[]
-     */
-    public function getStations(): Collection
-    {
-        return $this->stations;
-    }
-
-    public function addStation(Station $station): self
-    {
-        if (!$this->stations->contains($station)) {
-            $this->stations[] = $station;
-            $station->setRoute($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStation(Station $station): self
-    {
-        if ($this->stations->contains($station)) {
-            $this->stations->removeElement($station);
-            // set the owning side to null (unless already changed)
-            if ($station->getRoute() === $this) {
-                $station->setRoute(null);
-            }
-        }
-
-        return $this;
     }
 }
