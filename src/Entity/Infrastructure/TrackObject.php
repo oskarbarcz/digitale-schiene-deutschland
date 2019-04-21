@@ -51,12 +51,6 @@ class TrackObject
     private $type;
 
     /**
-     * @SWG\Property(description="If object is a station, it has to have assigned station ID.")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Station")
-     */
-    private $station;
-
-    /**
      * @SWG\Property(description="Route ID that object belongs to.")
      * @Assert\NotNull(message="track-object.route.not-null")
      * @Assert\Type(type=Route::class, message="track-object.route.type")
@@ -67,6 +61,12 @@ class TrackObject
      * @ORM\JoinColumn(nullable=false)
      */
     private $route;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Infrastructure\Station", inversedBy="trackObject", cascade={"persist",
+     *                                                                 "remove"})
+     */
+    private $station;
 
     public function getId(): ?int
     {
@@ -109,18 +109,6 @@ class TrackObject
         return $this;
     }
 
-    public function getStation(): ?Station
-    {
-        return $this->station;
-    }
-
-    public function setStation(?Station $station): self
-    {
-        $this->station = $station;
-
-        return $this;
-    }
-
     public function getRoute(): ?Route
     {
         return $this->route;
@@ -136,5 +124,17 @@ class TrackObject
     public function __toString()
     {
         return '#' . $this->id . ' ' . $this->name;
+    }
+
+    public function getStation(): ?Station
+    {
+        return $this->station;
+    }
+
+    public function setStation(?Station $station): self
+    {
+        $this->station = $station;
+
+        return $this;
     }
 }

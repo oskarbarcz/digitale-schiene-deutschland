@@ -27,9 +27,12 @@ class Station
     private $fullName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Route", inversedBy="station")
+     * @ORM\OneToOne(
+     *     targetEntity="App\Entity\Infrastructure\TrackObject",
+     *     mappedBy="station",
+     *     cascade={"persist", "remove"})
      */
-    private $route;
+    private $trackObject;
 
     public function getId(): ?int
     {
@@ -60,14 +63,20 @@ class Station
         return $this;
     }
 
-    public function getRoute(): ?Route
+    public function getTrackObject(): ?TrackObject
     {
-        return $this->route;
+        return $this->trackObject;
     }
 
-    public function setRoute(?Route $route): self
+    public function setTrackObject(?TrackObject $trackObject): self
     {
-        $this->route = $route;
+        $this->trackObject = $trackObject;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newStation = $trackObject === null ? null : $this;
+        if ($newStation !== $trackObject->getStation()) {
+            $trackObject->setStation($newStation);
+        }
 
         return $this;
     }

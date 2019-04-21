@@ -10,7 +10,8 @@ fos_rest:
     codes:
       App\Exceptions\NotFound\TrackObjectTypeNotFoundException: 404
       App\Exceptions\NotFound\RouteNotFoundException: 404
-    messages: ~
+    messages:
+      LogicException: false
   format_listener:
     rules:
       priorities: [json]
