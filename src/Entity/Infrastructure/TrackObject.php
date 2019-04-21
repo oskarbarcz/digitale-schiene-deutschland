@@ -5,6 +5,7 @@ namespace App\Entity\Infrastructure;
 use App\Entity\Explicit\TrackObjectType;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Swagger\Annotations as SWG;
 
 /**
  * @JMS\ExclusionPolicy("none")
@@ -21,27 +22,32 @@ class TrackObject
     private $id;
 
     /**
+     * @SWG\Property(description="Name of object. It should be short and understandable.")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @SWG\Property(description="Kilometer of route on which object is situated.")
      * @ORM\Column(type="float", nullable=true)
      */
     private $kilometer;
 
     /**
+     * @SWG\Property(description="Track object type (relation)")
      * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\TrackObjectType", inversedBy="trackObjects")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
     /**
+     * @SWG\Property(description="If object is a station, it has to have assigned station ID.")
      * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Station")
      */
     private $station;
 
     /**
+     * @SWG\Property(description="Route ID that object belongs to.")
      * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Route", inversedBy="trackObjects")
      * @ORM\JoinColumn(nullable=false)
      */

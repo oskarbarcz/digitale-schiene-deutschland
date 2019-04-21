@@ -34,6 +34,22 @@ class RouteService
     }
 
     /**
+     * Returns route by it's KBS number
+     *
+     * @param int $kbs
+     * @return Route
+     * @throws RouteNotFoundException
+     */
+    public function get(int $kbs): Route
+    {
+        $route = $this->repository->findOneBy(['kbs' => $kbs]);
+        if (!$route instanceof Route) {
+            throw new RouteNotFoundException(self::ROUTE_NOT_FOUND);
+        }
+        return $route;
+    }
+
+    /**
      * Facade function for getting all routes
      *
      * @return Route[]
@@ -63,22 +79,6 @@ class RouteService
     {
         $route = $this->get($kbs);
         $this->entityManager->remove($route);
-    }
-
-    /**
-     * Returns route by it's KBS number
-     *
-     * @param int $kbs
-     * @return Route
-     * @throws RouteNotFoundException
-     */
-    public function get(int $kbs): Route
-    {
-        $route = $this->repository->findOneBy(['kbs' => $kbs]);
-        if (!$route instanceof Route) {
-            throw new RouteNotFoundException(self::ROUTE_NOT_FOUND);
-        }
-        return $route;
     }
 
     public function __destruct()
