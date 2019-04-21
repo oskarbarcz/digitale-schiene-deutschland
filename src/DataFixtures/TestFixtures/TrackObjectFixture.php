@@ -21,8 +21,11 @@ class TrackObjectFixture extends Fixture
 {
     /** @var RouteService */
     protected $routeService;
+
     /** @var TrackObjectTypeService */
     protected $trackObjectTypeService;
+
+    private const AMOUNT = 4;
 
     public function __construct(RouteService $routeService, TrackObjectTypeService $trackObjectTypeService)
     {
@@ -38,19 +41,22 @@ class TrackObjectFixture extends Fixture
         $name = 'Example Track Object #';
         $types = $this->trackObjectTypeService->getAll();
         $routes = $this->routeService->getAll();
+        $i = self::AMOUNT;
 
-        foreach ($types as $id_t => $type) {
-            foreach ($routes as $id_r => $route) {
-                // object definition
-                $object = new TrackObject();
-                $object->setName($name . $id_r . $id_t)
-                       ->setKilometer(random_int(1, 30000))
-                       ->setRoute($route)
-                       ->setType($type);
-                $manager->persist($object);
+        while ($i > 0) {
+            foreach ($types as $id_t => $type) {
+                foreach ($routes as $id_r => $route) {
+                    // object definition
+                    $object = new TrackObject();
+                    $object->setName($name . $i . $id_r . $id_t)
+                           ->setKilometer(random_int(1, 30000))
+                           ->setRoute($route)
+                           ->setType($type);
+                    $manager->persist($object);
+                }
             }
+            $i--;
         }
-
 
         $manager->flush();
     }
