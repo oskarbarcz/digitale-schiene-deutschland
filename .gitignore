@@ -16,8 +16,14 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-/node_modules/
+###> PhpStorm project files ###
 /.idea/
+###< PhpStorm project files ###
+
+###> Project private files ###
+/public/fonts/*
+/public/images/*
+###< Project private files ###
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
@@ -25,3 +31,5 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+

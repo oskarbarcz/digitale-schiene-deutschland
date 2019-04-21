@@ -49,13 +49,19 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-
+    // sth
+    .enablePostCssLoader(options => {
+      options.config = {
+        // the directory where the postcss.config.ts file is stored
+        path: './postcss.config.js',
+      };
+    })
     // uncomment if you use TypeScript
     .enableTypeScriptLoader()
 
-// uncomment to get integrity="..." attributes on your script & link tags
-// requires WebpackEncoreBundle 1.4 or higher
-//.enableIntegrityHashes()
+    // uncomment to get integrity="..." attributes on your script & link tags
+    // requires WebpackEncoreBundle 1.4 or higher
+    .enableIntegrityHashes()
 
 // uncomment if you're having problems with a jQuery plugin
 //.autoProvidejQuery()
