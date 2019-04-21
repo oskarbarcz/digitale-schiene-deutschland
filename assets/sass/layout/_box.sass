@@ -1,1 +1,24 @@
-.box
+.wrapper
+  height: calc(100% - 36px)
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: row
+
+.box-container
+  height: auto
+  display: flex
+  align-items: center
+  max-height: 80vh
+  justify-content: center
+  flex-direction: column
+  margin: 2px
+
+.box-element
+  @include shadow(2)
+  margin: 2px auto
+  padding: 5px
+  color: #282828
+  background: #FFFFFF
+  width: 320px
+  text-align: center

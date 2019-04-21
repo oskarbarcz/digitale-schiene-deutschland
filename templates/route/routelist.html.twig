@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        {% include 'common/header.html.twig' %}
-        <main class="box">
-        </main>
-        {% include 'common/footer.html.twig' %}
+    <div class="wrapper">
+        <div class="box-container">
+            {% include 'common/header.html.twig' %}
+            <main class="box-element">
+                <h1>Panel title</h1>
+            </main>
+            {% include 'common/footer.html.twig' %}
+        </div>
     </div>
 {% endblock %}
