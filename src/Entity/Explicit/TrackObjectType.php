@@ -56,7 +56,7 @@ class TrackObjectType
 
     /**
      * @JMS\Exclude()
-     * @ORM\OneToMany(targetEntity="App\Entity\Infrastructure\TrackObject", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="App\Entity\Infrastructure\TrackObject", mappedBy="type", cascade={"persist"})
      */
     private $trackObjects;
 
@@ -123,5 +123,10 @@ class TrackObjectType
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id . ' ' . $this->name;
     }
 }

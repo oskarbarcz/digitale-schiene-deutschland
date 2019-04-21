@@ -60,7 +60,10 @@ class TrackObject
      * @SWG\Property(description="Route ID that object belongs to.")
      * @Assert\NotNull(message="track-object.route.not-null")
      * @Assert\Type(type=Route::class, message="track-object.route.type")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Route", inversedBy="trackObjects")
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Entity\Infrastructure\Route",
+     *     inversedBy="trackObjects"
+     *     )
      * @ORM\JoinColumn(nullable=false)
      */
     private $route;
@@ -128,5 +131,10 @@ class TrackObject
         $this->route = $route;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return '#' . $this->id . ' ' . $this->name;
     }
 }

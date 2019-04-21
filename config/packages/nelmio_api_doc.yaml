@@ -2,7 +2,7 @@ nelmio_api_doc:
   documentation:
     info:
       title: Digitale Schiene Deutschland
-      description: This is an awesome app!
+      description: Railway management software for Deutsche Bahn AG
       version: 0.1.0
     securityDefinitions:
       Bearer:

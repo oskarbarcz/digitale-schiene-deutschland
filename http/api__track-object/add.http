@@ -1,0 +1,33 @@
+POST localhost:8000/api/track-object
+Accept: application/json
+Cache-Control: no-cache
+
+{
+  "name": "string",
+  "kilometer": 0,
+  "type": {
+    "name": "string",
+    "cssClass": "string"
+  },
+  "station": {
+    "id": 0,
+    "short_name": "string",
+    "full_name": "string",
+    "route": {
+      "kbs": 0,
+      "name": "string",
+      "stations_name": "string",
+      "length": 0,
+      "max_permitted_speed": 0
+    }
+  },
+  "route": {
+    "kbs": 0,
+    "name": "string",
+    "stations_name": "string",
+    "length": 0,
+    "max_permitted_speed": 0
+  }
+}
+
+###
