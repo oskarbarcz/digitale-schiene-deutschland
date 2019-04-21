@@ -143,14 +143,11 @@ class TrackObject
 
     /**
      * @JMS\Expose()
-     * @JMS\VirtualProperty(name="stationId")
+     * @JMS\VirtualProperty(name="routeId")
      * @return int|null
      */
-    public function getStationId(): ?int
+    public function getRouteId(): ?int
     {
-        if ($this->station instanceof Station) {
-            return $this->station->getId();
-        }
-        return null;
+        return $this->route->getId();
     }
 }
