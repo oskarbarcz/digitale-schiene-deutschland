@@ -89,6 +89,7 @@ class Route
     private $trackObjects;
 
     /**
+     * @JMS\Exclude()
      * @ORM\OneToMany(targetEntity="App\Entity\Infrastructure\Station", mappedBy="route", orphanRemoval=true)
      */
     private $stations;

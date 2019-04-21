@@ -63,8 +63,12 @@ class TrackObject
     private $route;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Infrastructure\Station", inversedBy="trackObject", cascade={"persist",
-     *                                                                 "remove"})
+     * @JMS\Exclude()
+     * @ORM\OneToOne(
+     *     targetEntity="App\Entity\Infrastructure\Station",
+     *     inversedBy="trackObject",
+     *     cascade={"persist","remove"}
+     *     )
      */
     private $station;
 
@@ -136,5 +140,18 @@ class TrackObject
         $this->station = $station;
 
         return $this;
+    }
+
+    /**
+     * @JMS\Expose()
+     * @JMS\VirtualProperty(name="stationId")
+     * @return int|null
+     */
+    public function getStationId(): ?int
+    {
+        if ($this->station instanceof Station) {
+            return $this->station->getId();
+        }
+        return null;
     }
 }
