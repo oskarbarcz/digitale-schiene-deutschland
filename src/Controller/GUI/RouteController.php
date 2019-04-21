@@ -47,11 +47,11 @@ class RouteController extends AbstractController
     /**
      * @GET("/route/list", name="gui__route_list")
      */
-    public function routeList()
+    public function routeList(): Response
     {
 
         $routes = $this->entityManager->getRepository(Route::class)->findAll();
-        $this->render('route/routelist.html.twig', [
+        return $this->render('route/routelist.html.twig', [
             'routes' => $routes,
         ]);
     }
