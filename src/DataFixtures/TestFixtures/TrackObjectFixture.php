@@ -49,7 +49,7 @@ class TrackObjectFixture extends Fixture
                     // object definition
                     $object = new TrackObject();
                     $object->setName($name . $i . $id_r . $id_t)
-                           ->setKilometer(random_int(1, 30000))
+                           ->setKilometer(random_int(1, $route->getLength()))
                            ->setRoute($route)
                            ->setType($type);
                     $manager->persist($object);

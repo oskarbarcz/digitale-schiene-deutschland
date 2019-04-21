@@ -28,8 +28,8 @@ class TrackObject
     private $name;
 
     /**
-     * @SWG\Property(description="Kilometer of route on which object is situated.")
-     * @ORM\Column(type="float", nullable=true)
+     * @SWG\Property(description="Kilometer of route on which object is situated. Remember that meters units are used.")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $kilometer;
 
