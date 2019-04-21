@@ -11,6 +11,8 @@ use App\Services\EntityServices\TrackObjectService;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -53,6 +55,12 @@ class TrackObjectController extends AbstractValidatorFOSRestController
     /**
      * Gets all track objects from database
      *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returned array of all objects in database",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObject"))
+     * )
      * @Rest\View()
      * @Rest\Get("/all", name="api__track-object_get-all"))
      */
@@ -65,6 +73,16 @@ class TrackObjectController extends AbstractValidatorFOSRestController
     /**
      * Gets track object by it's ID
      *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returning track object with given ID.",
+     *     @Model(type=TrackObject::class)
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Track object with given ID not found."
+     * )
      * @Rest\View()
      * @Rest\Get("/{id}", requirements={"id"="\d+"}, name="api__track-object_by-id"))
      * @param TrackObject $trackObject
@@ -78,6 +96,12 @@ class TrackObjectController extends AbstractValidatorFOSRestController
     /**
      * Gets all track objects assigned to route
      *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returned array of items belonging to a route",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObject"))
+     * )
      * @Rest\View()
      * @Rest\Get("/byRoute/{kbs}",requirements={"kbs"="\d+"}, name="api__track-object_by-route")
      * @param Route $route
@@ -91,6 +115,14 @@ class TrackObjectController extends AbstractValidatorFOSRestController
     /**
      * Adds a track object
      *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returned array of items belonging to a route",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObject"))
+     * )
+     * @Rest\View()
+     * @Rest\Post("/", name="api__track-object_add")
      * @param TrackObject $trackObject
      * @return View
      */
@@ -109,6 +141,15 @@ class TrackObjectController extends AbstractValidatorFOSRestController
 
     /**
      * Edits a track object
+     *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returned array of items belonging to a route",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObject"))
+     * )
+     * @Rest\View()
+     * @Rest\Patch("/{id}", name="app_track-object_edit")
      */
     public function edit()
     {
@@ -118,6 +159,14 @@ class TrackObjectController extends AbstractValidatorFOSRestController
     /**
      * Deletes a track object
      *
+     * @SWG\Tag(name="TrackObject")
+     * @SWG\Response(
+     *     response="200",
+     *     description="Returned array of items belonging to a route",
+     *     @SWG\Schema(type="array", @SWG\Items(ref="#/definitions/TrackObject"))
+     * )
+     * @Rest\View()
+     * @Rest\Delete("/{id}", name="api__track-object_delete")
      * @param int $id
      * @return View
      * @throws TrackObjectNotFoundException
