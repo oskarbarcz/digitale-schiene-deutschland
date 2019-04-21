@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -19,6 +20,7 @@ class TrackObjectType
 {
     /**
      * @JMS\Type("integer")
+     * @SWG\Property(description="Type's database unique identifer", readOnly=true)
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -26,6 +28,7 @@ class TrackObjectType
     private $id;
 
     /**
+     * @SWG\Property(description="Name that has to be helpful to identify Type in editors")
      * @Assert\NotBlank(message="types.name.not-blank")
      * @Assert\Length(
      *     min="5",
@@ -38,6 +41,7 @@ class TrackObjectType
     private $name;
 
     /**
+     * @SWG\Property(description="CSS class assigned to this element. It'll define how the Type will be rendered.")
      * @Assert\NotBlank(message="types.styleClass.not-blank")
      * @Assert\Length(
      *     min="5",

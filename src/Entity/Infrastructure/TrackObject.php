@@ -13,6 +13,7 @@ use JMS\Serializer\Annotation as JMS;
 class TrackObject
 {
     /**
+     * @SWG\Property(description="Route's database unique identifer", readOnly=true)
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
