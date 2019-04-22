@@ -46,10 +46,13 @@ class TrackObjectFixture extends Fixture
         while ($i > 0) {
             foreach ($types as $id_t => $type) {
                 foreach ($routes as $id_r => $route) {
+                    $max = floor($route->getLength() / 1000);
+                    $max *= 1000;
                     // object definition
                     $object = new TrackObject();
                     $object->setName($name . $i . $id_r . $id_t)
-                           ->setKilometer(random_int(1, $route->getLength()))
+                        // set precision to hungreds meters
+                           ->setKilometer(random_int(1, $max))
                            ->setRoute($route)
                            ->setType($type);
                     $manager->persist($object);

@@ -41,7 +41,7 @@ class RouteController extends AbstractController
             $this->redirectToRoute('gui__route_list');
         }
 
-        return $this->render('base.html.twig', [
+        return $this->render('route/route_details.html.twig', [
             'route' => $route,
         ]);
     }

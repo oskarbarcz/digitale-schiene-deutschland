@@ -6,13 +6,30 @@
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1>Track details</h1>
+                <h1 class="box-element__header">Track details</h1>
             </main>
             {% include 'common/footer.html.twig' %}
         </div>
         <div class="box-container">
             <aside class="box-element">
-                <h2>Track objects</h2>
+                <h2 class="box-element__header">Track objects</h2>
+                {% if route.trackObjects %}
+                    <table class="track-object-list">
+                        {% for object in route.trackObjects %}
+                            <tr class="track-object-list__row track-object-list__row{{object.type.styleClass}}">
+                                <td class="track-object-list__cell track-object-list__cell--kilometer">
+                                    {{(object.kilometer/1000)|round(1)}}
+                                </td>
+                                <td class="track-object-list__cell track-object-list__cell--text">
+                                    {{object.name}}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <span>No track objects were added.</span>
+                {% endif %}
+
             </aside>
         </div>
     </div>
