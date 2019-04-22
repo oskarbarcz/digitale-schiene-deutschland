@@ -1,0 +1,40 @@
+.pagination
+  width: 90%
+  margin: 10px auto 5px
+  height: 35px
+  background: #EEEEEE
+  border-radius: 3px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  @include shadow(1)
+
+  &__page, &__arrow
+    display: inline-block
+    height: 35px
+    width: 35px
+    line-height: 1.8
+    text-align: center
+    font-weight: bold
+    transition: 0.2s all ease-in-out
+
+    &:hover
+      color: #ff2800
+
+    &--active
+      background: #ff2800
+      color: #FFFFFF
+
+      &:hover
+        color: #FFFFFF
+        background: lighten(#FF2800, 20)
+
+  &__arrow
+    color: #FF2800
+    background: #EEEEEE
+
+    &:hover
+      color: lighten(#FF2800, 20)
+
+    &[disabled], &[disabled="disabled"]
+      color: #666666

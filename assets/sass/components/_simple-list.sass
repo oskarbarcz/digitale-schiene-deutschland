@@ -1,0 +1,31 @@
+.simple-list
+  width: 90%
+  margin: 0 auto
+
+  &__element
+    background: #EEEEEE
+    font-size: 16px
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 5px
+    border-radius: 3px
+    margin: 5px 0
+    transition: 0.1s all ease-in-out
+    @include shadow(1)
+
+    &:hover, &:focus
+      @include shadow(2)
+
+
+  &__text-container
+    text-align: left
+
+  &__subtext
+    display: block
+    font-size: 0.8em
+
+  &__arrow
+    color: #FF2800
+    padding: 0 10px

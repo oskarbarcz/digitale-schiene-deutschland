@@ -30,15 +30,17 @@ class RouteController extends AbstractController
     }
 
     /**
-     * @GET("/route/{kbs}", requirements={"kbs"="\d+"}, name="gui__route_route")
+     * @GET("/route/{kbs}", requirements={"kbs"="\d+"}, name="gui__route_details")
      * @param Route|null $route
      * @return Response
      */
-    public function route(Route $route = null): Response
+    public function routeDetails(Route $route = null): Response
     {
+        // handle not founding the route
         if (!$route instanceof Route) {
-            //handle
+            $this->redirectToRoute('gui__route_list');
         }
+
         return $this->render('base.html.twig', [
             'route' => $route,
         ]);
@@ -47,11 +49,11 @@ class RouteController extends AbstractController
     /**
      * @GET("/route/list", name="gui__route_list")
      */
-    public function routeList(): Response
+    public function routeChooseScreen(): Response
     {
 
         $routes = $this->entityManager->getRepository(Route::class)->findAll();
-        return $this->render('route/routelist.html.twig', [
+        return $this->render('route/route_choose.html.twig', [
             'routes' => $routes,
         ]);
     }

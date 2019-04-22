@@ -6,12 +6,14 @@
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1>Kursbuchstrecke</h1>
-                {% for route in routes %}
-                    <a href="">{{route.stationsName}}</a>
-                {% endfor %}
+                <h1>Track details</h1>
             </main>
             {% include 'common/footer.html.twig' %}
+        </div>
+        <div class="box-container">
+            <aside class="box-element">
+                <h2>Track objects</h2>
+            </aside>
         </div>
     </div>
 {% endblock %}
