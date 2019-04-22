@@ -8,7 +8,7 @@ use App\Services\EntityServices\TrackObjectTypeService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
-use function array_rand;
+use function shuffle;
 
 /**
  * Creates track object for each object and for each type.
@@ -64,10 +64,10 @@ class TrackObjectFixture extends Fixture
         }
 
         // shuffle them
-        $objectsRand = array_rand($objects);
+        shuffle($objects);
 
         // load all
-        foreach ($objectsRand as $object) {
+        foreach ($objects as $object) {
             $manager->persist($object);
         }
 

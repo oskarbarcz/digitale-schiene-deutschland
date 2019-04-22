@@ -1,17 +1,51 @@
 .track-object-list
-  width: 90%
-  margin: 0 auto
+  display: block
+  width: 100%
+  margin: 5px auto
+  overflow-y: auto
+  max-height: 80vh
+  padding: 10px
 
   &__row
-    margin: 5px
-    padding: 5px
     width: 100%
 
+    &--station-big
+      font-weight: bold
+      font-size: 1.2em
+
+    &--station-sbahn
+      color: #006F32
+      font-weight: bold
+
+    &--station
+      font-size: 1em
+
+    &--station-former
+      color: #666666
+
+    &--highway
+      color: #ffa520
+
+    &--national-road
+      color: #ffa520
+
+    &--railway
+      color: #666666
+      font-weight: lighter
+      font-size: 0.9em
+
+    &--river
+
   &__cell
+    text-align: left
+    vertical-align: middle
+
     &--kilometer
       font-weight: bold
-      max-width: 10%
+      font-size: 0.9em
+      text-align: left
+
 
     &--text
-      padding: 10px
-      display: block
+      padding-left: 13px
+      font-size: 0.7em

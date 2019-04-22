@@ -13,6 +13,7 @@
         <div class="box-container">
             <aside class="box-element">
                 <h2 class="box-element__header">Track objects</h2>
+                <span class="box-element__subheader">[KBS{{route.kbs}}] {{route.stationsName}}</span>
                 {% if route.trackObjects %}
                     <table class="track-object-list">
                         {% for object in route.trackObjects %}
