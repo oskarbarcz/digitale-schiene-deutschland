@@ -8,6 +8,7 @@ use App\Services\EntityServices\TrackObjectTypeService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
+use function array_rand;
 
 /**
  * Creates track object for each object and for each type.
@@ -43,6 +44,7 @@ class TrackObjectFixture extends Fixture
         $routes = $this->routeService->getAll();
         $i = self::AMOUNT;
 
+        $objects = [];
         while ($i > 0) {
             foreach ($types as $id_t => $type) {
                 foreach ($routes as $id_r => $route) {
@@ -55,10 +57,18 @@ class TrackObjectFixture extends Fixture
                            ->setKilometer(random_int(1, $max))
                            ->setRoute($route)
                            ->setType($type);
-                    $manager->persist($object);
+                    $objects[] = $object;
                 }
             }
             $i--;
+        }
+
+        // shuffle them
+        $objectsRand = array_rand($objects);
+
+        // load all
+        foreach ($objectsRand as $object) {
+            $manager->persist($object);
         }
 
         $manager->flush();
