@@ -37,8 +37,9 @@ class RouteController extends AbstractController
     public function routeDetails(Route $route = null): Response
     {
         // handle not founding the route
+
         if (!$route instanceof Route) {
-            $this->redirectToRoute('gui__route_list');
+            return $this->redirectToRoute('gui__route_list');
         }
 
         return $this->render('route/route_details.html.twig', [
