@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
-{% block title %}Route list{% endblock %}
+{% set button_cfg = {
+    'link': path('gui__route_list'),
+    'icon_a': 'fas fa-chevron-left',
+    'text': 'Powrót do listy',
+    'icon_b': 'fas fa-list'
+} %}
 
+{% block title %}Route list{% endblock %}
 {% block body %}
     <div class="wrapper">
         <div class="box-container">
@@ -8,6 +14,9 @@
             <main class="box-element">
                 <h1 class="box-element__header">Track details</h1>
             </main>
+            <section class="box-element">
+                {% include 'common/back-button.html.twig' with button_cfg only %}
+            </section>
             {% include 'common/footer.html.twig' %}
         </div>
         <div class="box-container">
@@ -30,7 +39,6 @@
                 {% else %}
                     <span>No track objects were added.</span>
                 {% endif %}
-
             </aside>
         </div>
     </div>

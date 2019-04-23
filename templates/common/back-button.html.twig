@@ -1,0 +1,9 @@
+<a class="back-button" href="{{link}}">
+    {% if icon_a is defined %}
+        <span class="back-button__icon {{icon_a}}"></span>
+    {% endif %}
+    <span class="back-button__text">{{text}}</span>
+    {% if icon_b is defined %}
+        <span class="back-button__icon {{icon_b}}"></span>
+    {% endif %}
+</a>
