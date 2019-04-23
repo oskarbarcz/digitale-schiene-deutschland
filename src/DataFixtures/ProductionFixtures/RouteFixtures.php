@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataFixtures\ExplicitFixtures;
+namespace App\DataFixtures\ProductionFixtures;
 
 use App\Entity\Infrastructure\Route;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -40,14 +40,9 @@ class RouteFixtures extends Fixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    /**
-     * This method must return an array of groups
-     * on which the implementing class belongs to
-     *
-     * @return string[]
-     */
+    /** @inheritDoc */
     public static function getGroups(): array
     {
-        return ['dev'];
+        return ['prod'];
     }
 }
