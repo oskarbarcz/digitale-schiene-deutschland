@@ -54,13 +54,13 @@
                         <tr class="table-view__row">
                             <td class="table-view__cell table-view__cell--key">Stacja początkowa</td>
                             <td class="table-view__cell table-view__cell--value">
-                                {{stations.0}}
+                                {{stations[0].shortName}}
                             </td>
                         </tr>
                         <tr class="table-view__row">
-                            <td class="table-view__cell table-view__cell--key">Stacja początkowa</td>
+                            <td class="table-view__cell table-view__cell--key">Stacja końcowa</td>
                             <td class="table-view__cell table-view__cell--value">
-                                {{stations.length(stations)}}
+                                {{stations[stations|length -1].shortName}}
                             </td>
                         </tr>
                     {% endif %}
@@ -106,10 +106,10 @@
                         {% for station in stations %}
                             <tr class="track-object-list__row track-object-list__row">
                                 <td class="track-object-list__cell track-object-list__cell--kilometer">
-                                    {{(object.kilometer/1000)|round(1)}}
+                                    {{(station.trackObject.kilometer/1000)|round(1)}}
                                 </td>
                                 <td class="track-object-list__cell track-object-list__cell--text">
-                                    {{station.name}}
+                                    {{station.fullName}}
                                 </td>
                             </tr>
                         {% endfor %}
