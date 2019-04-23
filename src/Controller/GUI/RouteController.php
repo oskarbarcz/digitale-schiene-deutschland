@@ -72,14 +72,8 @@ class RouteController extends AbstractController
      */
     public function routeChooseScreen(PaginatorInterface $paginator, int $page = 1): Response
     {
-        $dql = 'SELECT a FROM App\Entity\Infrastructure\Route a ORDER BY a.id ASC';
-        $query = $this->entityManager->createQuery($dql);
-
-        $pagination = $paginator->paginate(
-            $query, /* query NOT result */
-            $page,
-            self::ELEMENTS_ON_PAGE
-        );
+        $query = $this->entityManager->getRepository(Route::class)->getPagedRoutes();
+        $pagination = $paginator->paginate($query, $page, self::ELEMENTS_ON_PAGE);
 
         return $this->render('route/route_choose.html.twig', [
             'pagination' => $pagination,

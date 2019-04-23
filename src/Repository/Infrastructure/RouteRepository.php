@@ -4,6 +4,7 @@ namespace App\Repository\Infrastructure;
 
 use App\Entity\Infrastructure\Route;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +18,15 @@ class RouteRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Route::class);
+    }
+
+    /**
+     * @return Query
+     */
+    public function getPagedRoutes(): Query
+    {
+        $dql = 'SELECT a FROM App\Entity\Infrastructure\Route a ORDER BY a.id ASC';
+        return $this->_em->createQuery($dql);
     }
 
     // /**
