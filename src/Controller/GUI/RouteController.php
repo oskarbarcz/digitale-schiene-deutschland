@@ -4,6 +4,7 @@ namespace App\Controller\GUI;
 
 
 use App\Entity\Infrastructure\Route;
+use App\Entity\Infrastructure\Station;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,13 +38,22 @@ class RouteController extends AbstractController
     public function routeDetails(Route $route = null): Response
     {
         // handle not founding the route
-
         if (!$route instanceof Route) {
             return $this->redirectToRoute('gui__route_list');
         }
 
+        // sort the stations along the way
+        $stations = [];
+        foreach ($route->getTrackObjects() as $object) {
+            $station = $object->getStation();
+            if ($station instanceof Station) {
+                $stations[] = $station;
+            }
+        }
+
         return $this->render('route/route_details.html.twig', [
-            'route' => $route,
+            'route'    => $route,
+            'stations' => $stations,
         ]);
     }
 
