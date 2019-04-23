@@ -45,7 +45,7 @@ class TrackObject
      * @SWG\Property(description="Track object type (relation)")
      * @Assert\NotNull(message="track-object.type.not-null")
      * @Assert\Type(type=TrackObjectType::class, message="track-object.type.type")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\TrackObjectType", inversedBy="trackObjects")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\TrackObjectType", inversedBy="trackObjects", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
@@ -66,7 +66,8 @@ class TrackObject
      * @ORM\OneToOne(
      *     targetEntity="App\Entity\Infrastructure\Station",
      *     inversedBy="trackObject",
-     *     cascade={"persist","remove"}
+     *     cascade={"persist","remove"},
+     *     fetch="EAGER"
      *     )
      */
     private $station;
