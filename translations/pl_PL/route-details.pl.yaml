@@ -1,0 +1,21 @@
+"route-details":
+  "page-title": "Szczegóły trasy"
+  "details":
+    "title": "Szczegóły trasy"
+    "table":
+      "short-name": "Nazwa potoczna"
+      "kbs": "Numer KBS"
+      "length": "Długość trasy"
+      "max-speed": "Vmax"
+      "object-count": "Ilość obiektów"
+      "station-count": "Ilość stacji"
+      "station-start": "Stacja początkowa"
+      "station-end": "Stacja końcowa"
+  "track-list":
+    "title": "Obiekty torowe"
+    "no-objects": "Brak obiektów przy linii."
+  "stations-list":
+    "title": "Stacje i przystanki"
+    "no-stations": "Brak stacji przy linii."
+  "buttons":
+    "back-to-list": "Powrót do listy"

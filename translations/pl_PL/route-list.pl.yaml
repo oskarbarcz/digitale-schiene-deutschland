@@ -1,0 +1,7 @@
+"route-list":
+  "page-title": "Lista rozkładów"
+  "list":
+    "title": "Rozkłady służbowe"
+    "no-elements": "Nie znaleziono rozkładów"
+  "buttons":
+    "back-to-menu": "Powrót do menu"

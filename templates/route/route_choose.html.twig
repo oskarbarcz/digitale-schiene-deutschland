@@ -1,18 +1,19 @@
+{% trans_default_domain 'route-list' %}
 {% extends 'base.html.twig' %}
 {% set button_cfg = {
     'link': path('gui__menu'),
     'icon_a': 'fas fa-chevron-left',
-    'text': 'Powrót do menu',
+    'text': 'route-list.buttons.back-to-menu'|trans,
     'icon_b': 'fas fa-th'
 } %}
 
-{% block title %}Route list{% endblock %}
+{% block title %}{{'route-list.page-title'|trans}}{% endblock %}
 {% block body %}
     <div class="wrapper">
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1 class="box-element__header">Rozkłady służbowe</h1>
+                <h1 class="box-element__header">{{'route-list.list.title'|trans}}</h1>
                 <div class="simple-list">
                     {% for route in pagination if pagination %}
                         <a href="{{path('gui__route_details',{'kbs': route.kbs})}}" class="simple-list__element">
@@ -25,13 +26,10 @@
                     {% else %}
                         <div class="simple-list__replacement">
                             <span class="simple-list__replacement-icon far fa-frown"></span>
-                            <small class="simple-list__replacement-text">Nie znaleziono rozkładów</small>
+                            <small class="simple-list__replacement-text">{{'route-list.list.no-elements'|trans}}</small>
                         </div>
                     {% endfor %}
-                    {% if pagination %}
-                        {# #}
-                        {{knp_pagination_render(pagination)}}
-                    {% endif %}
+                    {{knp_pagination_render(pagination)}}
                 </div>
             </main>
             <section class="box-element">

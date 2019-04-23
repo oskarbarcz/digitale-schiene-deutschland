@@ -1,0 +1,7 @@
+"route-list":
+  "page-title": "Fahrplanlist"
+  "list":
+    "title": "Dienstfahrpläne"
+    "no-elements": "Keine fahrpläne gefunden."
+  "buttons":
+    "back-to-menu": "Zurück zur menü"

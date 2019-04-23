@@ -1,0 +1,21 @@
+"route-details":
+  "page-title": "Strecke detailen"
+  "details":
+    "title": "Strecke detailen"
+    "table":
+      "short-name": "Bezeichnung"
+      "kbs": "Kursbuchstrecke"
+      "length": "Strecke Länge"
+      "max-speed": "Vmax"
+      "object-count": "Objekten Anzahl"
+      "station-count": "Bahnhöfe Anzahl"
+      "station-start": "Anfangsbahnof"
+      "station-end": "Ausgehendbahnhof"
+  "track-list":
+    "title": "Gleis Objekten"
+    "no-objects": "Kein Objekte entlang der Strecke."
+  "stations-list":
+    "title": "Bahnhöfen und Haltepunkten"
+    "no-stations": "Kein Bahnhofen entlang der Strecke."
+  "buttons":
+    "back-to-list": "Zurück zur Streckenliste"

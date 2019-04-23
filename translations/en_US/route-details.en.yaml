@@ -1,0 +1,21 @@
+"route-details":
+  "page-title": "Route details"
+  "details":
+    "title": "Route details"
+    "table":
+      "short-name": "Regional name"
+      "kbs": "KBS number"
+      "length": "Route length"
+      "max-speed": "Vmax"
+      "object-count": "Objects count"
+      "station-count": "Stations count"
+      "station-start": "First station"
+      "station-end": "Last station"
+  "track-list":
+    "title": "Track objects"
+    "no-objects": "No track objects along this route."
+  "stations-list":
+    "title": "Stations and stop points"
+    "no-stations": "No stations along this route."
+  "buttons":
+    "back-to-list": "Back to route list"

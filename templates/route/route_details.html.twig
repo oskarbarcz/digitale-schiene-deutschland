@@ -1,64 +1,81 @@
+{% trans_default_domain 'route-details' %}
 {% extends 'base.html.twig' %}
 {% set button_cfg = {
     'link': path('gui__route_list'),
     'icon_a': 'fas fa-chevron-left',
-    'text': 'Powrót do listy',
+    'text': 'route-details.buttons.back-to-list'|trans,
     'icon_b': 'fas fa-list'
 } %}
 
-{% block title %}Route list{% endblock %}
+{% block title %}{{'route-details.page-title'|trans}}{% endblock %}
 {% block body %}
     <div class="wrapper">
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1 class="box-element__header">Szczegóły trasy</h1>
+                <h1 class="box-element__header">{{'route-details.details.title'|trans}}</h1>
                 <table class="table-view">
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Nazwa potoczna</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.short-name'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{route.name}}
                         </td>
                     </tr>
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Numer KBS</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.kbs'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{route.kbs}}
                         </td>
                     </tr>
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Długość trasy</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.length'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{(route.length/1000)|round(1)}} km
                         </td>
                     </tr>
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Vmax</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.max-speed'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{route.maxPermittedSpeed}} km/h
                         </td>
                     </tr>
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Ilość obiektów</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.object-count'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{route.trackObjects|length}}
                         </td>
                     </tr>
                     <tr class="table-view__row">
-                        <td class="table-view__cell table-view__cell--key">Ilość stacji</td>
+                        <td class="table-view__cell table-view__cell--key">
+                            {{'route-details.details.table.station-count'|trans}}
+                        </td>
                         <td class="table-view__cell table-view__cell--value">
                             {{stations|length}}
                         </td>
                     </tr>
                     {% if stations|length > 1 %}
                         <tr class="table-view__row">
-                            <td class="table-view__cell table-view__cell--key">Stacja początkowa</td>
+                            <td class="table-view__cell table-view__cell--key">
+                                {{'route-details.details.table.station-start'|trans}}
+                            </td>
                             <td class="table-view__cell table-view__cell--value">
                                 {{stations[0].shortName}}
                             </td>
                         </tr>
                         <tr class="table-view__row">
-                            <td class="table-view__cell table-view__cell--key">Stacja końcowa</td>
+                            <td class="table-view__cell table-view__cell--key">
+                                {{'route-details.details.table.station-end'|trans}}
+                            </td>
                             <td class="table-view__cell table-view__cell--value">
                                 {{stations[stations|length -1].shortName}}
                             </td>
@@ -74,7 +91,9 @@
 
         <div class="box-container">
             <aside class="box-element">
-                <h2 class="box-element__header">Obiekty torowe</h2>
+                <h2 class="box-element__header">
+                    {{'route-details.track-list.title'|trans}}
+                </h2>
                 {% if route.trackObjects|length > 0 %}
                     <span class="box-element__subheader">[KBS{{route.kbs}}] {{route.stationsName}}</span>
                     <table class="track-object-list">
@@ -92,14 +111,16 @@
                 {% else %}
                     <div class="simple-list__replacement">
                         <span class="simple-list__replacement-icon far fa-frown"></span>
-                        <small class="simple-list__replacement-text">Brak obiektów przy linii.</small>
+                        <small class="simple-list__replacement-text">
+                            {{'route-details.track-list.no-objects'|trans}}
+                        </small>
                     </div>
                 {% endif %}
             </aside>
         </div>
         <div class="box-container">
             <aside class="box-element">
-                <h2 class="box-element__header">Stacje i przystanki</h2>
+                <h2 class="box-element__header">{{'route-details.stations-list.title'|trans}}</h2>
                 {% if stations|length > 0 %}
                     <span class="box-element__subheader">{{route.stationsName}}</span>
                     <table class="track-object-list">
@@ -117,7 +138,9 @@
                 {% else %}
                     <div class="simple-list__replacement">
                         <span class="simple-list__replacement-icon far fa-frown"></span>
-                        <small class="simple-list__replacement-text">Brak stacji przy linii.</small>
+                        <small class="simple-list__replacement-text">
+                            {{'route-details.stations-list.no-stations'|trans}}
+                        </small>
                     </div>
                 {% endif %}
             </aside>
