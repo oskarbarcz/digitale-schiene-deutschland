@@ -1,12 +1,13 @@
 <?php
 
-namespace App\DataFixtures\TestFixtures;
+namespace App\DataFixtures\ExplicitFixtures;
 
 use App\Entity\Infrastructure\Route;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class RouteFixtures extends Fixture
+class RouteFixtures extends Fixture implements FixtureGroupInterface
 {
     /** @inheritDoc */
     public function load(ObjectManager $manager): void
@@ -37,5 +38,16 @@ class RouteFixtures extends Fixture
 
 
         $manager->flush();
+    }
+
+    /**
+     * This method must return an array of groups
+     * on which the implementing class belongs to
+     *
+     * @return string[]
+     */
+    public static function getGroups(): array
+    {
+        return ['dev'];
     }
 }

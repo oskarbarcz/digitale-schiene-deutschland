@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% set button_cfg = {
-    'link': path('gui__route_list'),
+    'link': path('gui__menu'),
     'icon_a': 'fas fa-chevron-left',
     'text': 'Powrót do menu',
     'icon_b': 'fas fa-th'
@@ -12,7 +12,7 @@
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <main class="box-element">
-                <h1>Track schedules</h1>
+                <h1>Rozkłady służbowe</h1>
                 <div class="simple-list">
                     {% for route in routes if routes %}
                         <a href="{{path('gui__route_details',{'kbs': route.kbs})}}" class="simple-list__element">

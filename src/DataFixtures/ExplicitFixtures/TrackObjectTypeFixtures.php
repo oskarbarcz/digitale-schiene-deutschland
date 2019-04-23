@@ -4,9 +4,10 @@ namespace App\DataFixtures\ExplicitFixtures;
 
 use App\Entity\Explicit\TrackObjectType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class TrackObjectTypeFixtures extends Fixture
+class TrackObjectTypeFixtures extends Fixture implements FixtureGroupInterface
 {
     private const DATA = [
         [
@@ -54,5 +55,16 @@ class TrackObjectTypeFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    /**
+     * This method must return an array of groups
+     * on which the implementing class belongs to
+     *
+     * @return string[]
+     */
+    public static function getGroups(): array
+    {
+        return ['dev', 'prod'];
     }
 }

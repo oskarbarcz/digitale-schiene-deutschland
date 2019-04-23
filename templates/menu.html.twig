@@ -1,12 +1,36 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Menu główne{% endblock %}
 {% block body %}
-    <div class="box-container">
-        {% include 'common/header.html.twig' %}
-        <main class="box-element">
-            <h1>Menu główne</h1>
-        </main>
-        {% include 'common/footer.html.twig' %}
+    <div class="wrapper">
+        <div class="box-container">
+            {% include 'common/header.html.twig' %}
+            <main class="box-element">
+                <h1>Wybierz aplikację</h1>
+                <div class="menu">
+                    <a href="" class="menu__element" disabled>
+                        <span class="menu__icon fas fa-plus-square fa-fw"></span>
+                        <span class="menu__text">Rejestruj przejazd</span>
+                        <span class="menu__icon fas fa-chevron-right"></span>
+                    </a>
+                    <a href="" class="menu__element" disabled>
+                        <span class="menu__icon fas fa-ticket-alt fa-fw"></span>
+                        <span class="menu__text">Sprzedaż biletów</span>
+                        <span class="menu__icon fas fa-chevron-right"></span>
+                    </a>
+                    <a href="{{path('gui__route_list')}}" class="menu__element">
+                        <span class="menu__icon fas fa-map-marked-alt fa-fw"></span>
+                        <span class="menu__text">Rozkłady służbowe</span>
+                        <span class="menu__icon fas fa-chevron-right"></span>
+                    </a>
+                    <a href="" class="menu__element" disabled="">
+                        <span class="menu__icon fas fa-clipboard fa-fw"></span>
+                        <span class="menu__text">Karta pracy</span>
+                        <span class="menu__icon fas fa-chevron-right"></span>
+                    </a>
+                </div>
+            </main>
+            {% include 'common/footer.html.twig' %}
+        </div>
     </div>
-
 {% endblock %}
