@@ -22,7 +22,7 @@
         <div class="box-container">
             <aside class="box-element">
                 <h2 class="box-element__header">Track objects</h2>
-                {% if route.trackObjects %}
+                {% if route.trackObjects|length > 0 %}
                     <span class="box-element__subheader">[KBS{{route.kbs}}] {{route.stationsName}}</span>
                     <table class="track-object-list">
                         {% for object in route.trackObjects %}
@@ -37,7 +37,10 @@
                         {% endfor %}
                     </table>
                 {% else %}
-                    <span>No track objects were added.</span>
+                    <div class="simple-list__replacement">
+                        <span class="simple-list__replacement-icon far fa-frown"></span>
+                        <small class="simple-list__replacement-text">Nie znaleziono obiektów</small>
+                    </div>
                 {% endif %}
             </aside>
         </div>
