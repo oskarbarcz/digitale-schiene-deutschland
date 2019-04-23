@@ -14,7 +14,7 @@
             <main class="box-element">
                 <h1 class="box-element__header">Rozkłady służbowe</h1>
                 <div class="simple-list">
-                    {% for route in routes if routes %}
+                    {% for route in pagination if pagination %}
                         <a href="{{path('gui__route_details',{'kbs': route.kbs})}}" class="simple-list__element">
                             <span class="simple-list__text-container">
                                 <span class="simple-list__text">{{route.name}}</span>
@@ -28,16 +28,9 @@
                             <small class="simple-list__replacement-text">Nie znaleziono rozkładów</small>
                         </div>
                     {% endfor %}
-                    {% if routes %}
-                        <div class="pagination">
-                            <a href="" class="pagination__arrow fas fa-caret-left"></a>
-                            <div class="pagination__counter">
-                                <a href="" class="pagination__page pagination__page--active">1</a>
-                                <a href class="pagination__page">2</a>
-                                <a href="" class="pagination__page">3</a>
-                            </div>
-                            <a href="" class="pagination__arrow fas fa-caret-right" disabled></a>
-                        </div>
+                    {% if pagination %}
+                        {# #}
+                        {{knp_pagination_render(pagination)}}
                     {% endif %}
                 </div>
             </main>

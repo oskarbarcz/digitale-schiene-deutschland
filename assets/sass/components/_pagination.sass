@@ -1,22 +1,27 @@
 .pagination
-  width: 90%
   margin: 10px auto 5px
-  height: 35px
-  background: #EEEEEE
-  border-radius: 3px
   display: flex
-  align-items: center
+  background: #EEEEEE
   justify-content: space-between
+  border-radius: 3px
   @include shadow(1)
 
+  &__arrows, &__counter
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+
   &__page, &__arrow
-    display: inline-block
-    height: 35px
-    width: 35px
-    line-height: 1.8
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 30px
+    height: 30px
+    font-size: 0.9em
     text-align: center
     font-weight: bold
     transition: 0.2s all ease-in-out
+    cursor: pointer
 
     &:hover
       color: #ff2800
@@ -27,14 +32,26 @@
 
       &:hover
         color: #FFFFFF
-        background: lighten(#FF2800, 20)
+        background: darken(#FF2800, 10)
 
   &__arrow
     color: #FF2800
     background: #EEEEEE
+    width: 20px
 
     &:hover
-      color: lighten(#FF2800, 20)
+      color: darken(#FF2800, 20)
 
-    &[disabled], &[disabled="disabled"]
+    &--disabled
       color: #666666
+      cursor: not-allowed
+
+      &:hover
+        color: #666666
+
+
+    &--left
+      margin-left: 5px
+
+    &--right
+      margin-right: 5px

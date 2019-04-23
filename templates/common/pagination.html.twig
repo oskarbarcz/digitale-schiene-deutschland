@@ -1,0 +1,50 @@
+{% if pageCount > 1 %}
+    <div class="pagination">
+
+        <div class="pagination__arrows">
+            {% if first is defined and current != first %}
+                <a class="pagination__arrow pagination__arrow--left fas fa-angle-double-left"
+                   href="{{path(route, query|merge({(pageParameterName): first}))}}"></a>
+            {% else %}
+                <span class="pagination__arrow pagination__arrow--left pagination__arrow--disabled fas
+                fa-angle-double-left"></span>
+            {% endif %}
+            {% if previous is defined %}
+                <a class="pagination__arrow fas fa-angle-left"
+                   href="{{path(route, query|merge({(pageParameterName): previous}))}}"></a>
+            {% else %}
+                <span class="pagination__arrow pagination__arrow--disabled fas fa-angle-left"></span>
+            {% endif %}
+        </div>
+
+        <div class="pagination__counter">
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <a class="pagination__page" href="{{path(route, query|merge({(pageParameterName): page}))}}">
+                        {{page}}
+                    </a>
+                {% else %}
+                    <span class="pagination__page pagination__page--active">{{page}}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="pagination__arrows">
+            {% if next is defined %}
+                <a class="pagination__arrow fas fa-angle-right"
+                   href="{{path(route, query|merge({(pageParameterName): next}))}}"></a>
+            {% else %}
+                <span class="pagination__arrow pagination__arrow--disabled fas fa-angle-right"></span>
+            {% endif %}
+
+            {% if last is defined and current != last %}
+                <a class="pagination__arrow pagination__arrow--right fas fa-angle-double-right"
+                   href="{{path(route, query|merge({(pageParameterName): last}))}}"></a>
+            {% else %}
+                <span class="pagination__arrow pagination__arrow--right pagination__arrow--disabled fas
+                fa-angle-double-right"></span>
+            {% endif %}
+        </div>
+
+    </div>
+{% endif %}

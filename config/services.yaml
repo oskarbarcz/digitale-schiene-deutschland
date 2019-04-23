@@ -6,6 +6,8 @@
 parameters:
   locale: '%env(resolve:APP_LOCALE)%'
 
+  knp_paginator.template.pagination: /common/pagination.html.twig
+
 services:
   # default configuration for services in *this* file
   _defaults:
