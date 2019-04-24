@@ -1,0 +1,8 @@
+"menu":
+  "page-title": "Menu główne"
+  "title": "Wybierz aplikację"
+  "modules":
+    "register-drive": "Rejestruj przejazd"
+    "ticket-sell": "Sprzedaż biletów"
+    "staff-schedules": "Rozkłady służbowe"
+    "work-card": "Karty pracy"

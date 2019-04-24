@@ -1,0 +1,8 @@
+"menu":
+  "page-title": "Hauptmenu"
+  "title": "Applikation Auswahl"
+  "modules":
+    "register-drive": "Fahr registrieren"
+    "ticket-sell": "Fahrschein verkaufen"
+    "staff-schedules": "Dienstfahrpläne"
+    "work-card": "Arbeitskarten"
