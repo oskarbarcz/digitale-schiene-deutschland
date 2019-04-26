@@ -25,6 +25,15 @@
   width: 320px
   text-align: center
 
+  &--info, &--success, &--warn, &--error, &--message
+    display: flex
+    justify-content: left
+    align-items: center
+    flex-direction: row
+    flex-wrap: nowrap
+    text-align: left
+    color: white
+
   &__header
     font-size: 1.2em
 
@@ -38,3 +47,28 @@
     text-align: left
     color: #292929
     font-size: 0.7em
+
+  &__icon
+    width: 70px
+    display: block
+    text-align: center
+
+  &__warn-text
+    padding: 5px
+    font-size: 0.8em
+    display: block
+
+  &--success
+    background-color: #4cf137
+
+  &--info
+    background-color: #03a9f4
+
+  &--warn
+    background-color: #e67e22
+
+  &--error
+    background-color: #ff2800
+
+  &--message
+    color: #292929
