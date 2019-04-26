@@ -1,9 +1,21 @@
-"login":
-  "page-title": "Zaloguj się do systemu"
-  "title": "Zaloguj się"
-  "errors":
-    "magnet-reader":
-      "not-found": "Nie znaleziono czytnika kart magnetycznych. Zaloguj się za pomocą loginu i hasła."
-      "configuration-error": "Czytnik nie został skonfigurowany poprawnie. Zaloguj się za pomocą loginu i hasła."
-      "stopped-working": "Czytnik kart magnetycznych przestał działać. Zaloguj się za pomocą loginu i hasła."
-      "turned-off": "Czytnik kart magnetycznych jest wyłączony. Włącz go, aby móc zalogować się kartą."
+login:
+  page-title: "Zaloguj się do systemu"
+  title: "Zaloguj się"
+  magne":
+    description: "Wyświetlono ekran logowania za pomocą karty magnetycznej. Aby zalogować się za pomocą loginu i hasła kliknij"
+    here: "tutaj"
+    pick-card: "Przyłóż kartę do czytnika"
+  nick:
+    description: "Wyświetlono ekran logowania za pomocą loginu i hasła. Aby zalogować się za pomocą karty magnetycznej kliknij"
+    here: "tutaj"
+    inputs:
+      username: "Nazwa użytkownika albo adres e-mail"
+      password: "Hasło"
+      remember-me: "Zapamiętaj użytkownika"
+      submit-text: "Zaloguj się"
+  errors:
+    magnet-reader:
+      not-found: "Nie znaleziono czytnika kart magnetycznych. Zaloguj się za pomocą loginu i hasła."
+      configuration-error: "Czytnik nie został skonfigurowany poprawnie. Zaloguj się za pomocą loginu i hasła."
+      stopped-working: "Czytnik kart magnetycznych przestał działać. Zaloguj się za pomocą loginu i hasła."
+      turned-off: "Czytnik kart magnetycznych jest wyłączony. Włącz go, aby móc zalogować się kartą."

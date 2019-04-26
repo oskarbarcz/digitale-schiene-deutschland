@@ -7,12 +7,13 @@
             {% include 'common/header.html.twig' %}
             <section class="box-element">
                 <h1 class="box-element__header">{{'login.title'|trans}}</h1>
-                <p class="box-element__description">Wyświetlono ekran logowania za pomocą karty magnetycznej. Aby
-                    zalogować się za pomocą loginu i hasła kliknij <a href="{{path('fos_user_security_login')}}"
-                                                                      class="link">tutaj</a>. </p>
+                <p class="box-element__description">
+                    {{'login.magnet.description'|trans}}
+                    <a href="{{path('fos_user_security_login')}}" class="link">{{'login.magnet.here'|trans}}</a>.
+                </p>
                 <main class="card-module">
                     <span class="card-module__icon far fa-id-card"></span>
-                    <span class="card-module__text">Przyłóż kartę do czytnika</span>
+                    <span class="card-module__text">{{"login.magnet.pick-card"|trans}}</span>
                 </main>
             </section>
             {% include 'common/flashes.html.twig' with {'domain': 'login'} only %}
