@@ -1,0 +1,21 @@
+login:
+  page-title: "Loggen Sie sich ins System ein"
+  title: "Loggen sich ein"
+  magnet:
+    description: "Zeigt einen Anmeldebildschirm mit einer Magnetkarte an. Um sich mit Ihrem Login und Passwort anzumelden, klicken Sie"
+    here: "hier"
+    pick-card: "Setzen Sie die Karte zur Magnetleser"
+  nick:
+    description: "Zeigt einen Login-Bildschirm mit Login und Passwort an. Um sich mit Magnetkarte einloggen klicken Sie"
+    here: "hier"
+    inputs:
+      username: "Dienstmail-Adresse oder Login"
+      password: "Passwort"
+      remember-me: "Benutzer merken"
+      submit-text: "Loggen sich ein"
+  errors:
+    magnet-reader:
+      not-found: "Kein Magnetkartenleser gefunden Loggen Sie sich mit Ihrem Login und Passwort ein."
+      configuration-error: "Der Reader wurde nicht richtig konfiguriert. Loggen Sie sich mit Ihrem Login und Passwort ein."
+      stopped-working: "Der Magnetkartenleser funktioniert nicht mehr. Loggen Sie sich mit Ihrem Login und Passwort ein."
+      turned-off: "Der Magnetkartenleser ist ausgeschaltet. Aktivieren Sie diese Option, um sich mit der Magnetkarte einloggen zu können."

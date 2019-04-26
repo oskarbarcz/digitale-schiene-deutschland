@@ -1,0 +1,21 @@
+login:
+  page-title: "Log into the system"
+  title: "Log in"
+  magnet:
+    description: "Magnet login screen was shown. For logging with login and password click"
+    here: "here"
+    pick-card: "Hold the card to the reader"
+  nick:
+    description: "Login form was shown. To log in with magnet card click"
+    here: "here"
+    inputs:
+      username: "Staff e-mail address or login"
+      password: "Password"
+      remember-me: "Remember user"
+      submit-text: "Log in"
+  errors:
+    magnet-reader:
+      not-found: "Magnet reader were not found. Log in with login and password instead."
+      configuration-error: "Magnet reader were not configured correctly. Log in with login and password instead."
+      stopped-working: "Magnet reader stopped working. Log in with login and password instead."
+      turned-off: "Card reader is turned off. Turn it on to log in with magnet card, or log in with email and password instead."

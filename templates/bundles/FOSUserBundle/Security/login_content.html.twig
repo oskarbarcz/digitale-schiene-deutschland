@@ -5,13 +5,12 @@
     {{'login.nick.description'|trans}}
     <a href="{{path('fos_user_security_card')}}" class="link">{{'login.nick.here'|trans}}</a>.
 </p>
-<form action="{{path("fos_user_security_check")}}" method="post">
+<form class="form" action="{{path("fos_user_security_check")}}" method="post">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{csrf_token}}"/>
     {% endif %}
 
-    <label class="form__label"
-           for="username">{{'login.nick.inputs.username'|trans}}</label>
+    <label class="form__label" for="username">{{'login.nick.inputs.username'|trans}}</label>
     <input class="form__input"
            type="text"
            id="username"
@@ -20,8 +19,7 @@
            required="required"
            autocomplete="username"/>
 
-    <label class="form__label"
-           for="password">{{'login.nick.inputs.password'|trans}}</label>
+    <label class="form__label" for="password">{{'login.nick.inputs.password'|trans}}</label>
     <input class="form__input"
            type="password"
            id="password"
@@ -29,13 +27,14 @@
            required="required"
            autocomplete="current-password"/>
 
-    <label class="checkbox login__checkbox">
-        {{'login.nick.inputs.remember-me'|trans}}
+    <label class="checkbox">
+        <span class="checkbox__text">{{'login.nick.inputs.remember-me'|trans}}</span>
         <input class="checkbox__input"
                type="checkbox"
                id="remember_me"
                name="_remember_me"
-               value="on">
+               value="on"
+               checked>
         <span class="checkbox__checkmark"></span>
     </label>
 
@@ -44,6 +43,6 @@
             type="submit"
             class="form__input form__input--submit">
         {% trans from 'login' %}login.nick.inputs.submit-text{% endtrans %}
-        <span class="form__input-icon fas fa-chevron-right"></span>
+        <span class="form__input-icon-r fas fa-chevron-right"></span>
     </button>
 </form>

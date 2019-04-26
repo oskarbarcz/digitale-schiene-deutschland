@@ -1,7 +1,7 @@
 login:
   page-title: "Zaloguj się do systemu"
   title: "Zaloguj się"
-  magne":
+  magnet:
     description: "Wyświetlono ekran logowania za pomocą karty magnetycznej. Aby zalogować się za pomocą loginu i hasła kliknij"
     here: "tutaj"
     pick-card: "Przyłóż kartę do czytnika"
@@ -9,7 +9,7 @@ login:
     description: "Wyświetlono ekran logowania za pomocą loginu i hasła. Aby zalogować się za pomocą karty magnetycznej kliknij"
     here: "tutaj"
     inputs:
-      username: "Nazwa użytkownika albo adres e-mail"
+      username: "Służbowy adres e-mail lub login"
       password: "Hasło"
       remember-me: "Zapamiętaj użytkownika"
       submit-text: "Zaloguj się"
