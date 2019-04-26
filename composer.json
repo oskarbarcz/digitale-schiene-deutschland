@@ -7,7 +7,7 @@
     "ext-iconv": "*",
     "doctrine/doctrine-fixtures-bundle": "^3.1",
     "friendsofsymfony/rest-bundle": "^2.5",
-    "friendsofsymfony/user-bundle": "^2.1.2",
+    "friendsofsymfony/user-bundle": "*",
     "jms/serializer-bundle": "^3.2",
     "knplabs/knp-paginator-bundle": "^3.0",
     "nelmio/api-doc-bundle": "^3.4",

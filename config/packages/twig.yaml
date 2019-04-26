@@ -4,3 +4,4 @@ twig:
   strict_variables: '%kernel.debug%'
   paths:
     "%kernel.project_dir%/templates": FOSRest
+  form_themes: ['bundles/Forms/form_view.html.twig']

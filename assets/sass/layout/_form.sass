@@ -1,0 +1,113 @@
+.form
+  background: #FFFFFF
+  width: 300px
+  @include shadow(1)
+  border-radius: 5px
+  font-family: "PT Sans Narrow", sans-serif
+
+  &__container
+    background: #F0F0F0
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 0 auto
+    flex-direction: column
+
+  &__title
+    color: #ff2800
+    margin: 10px
+    text-align: center
+    font-size: 1.7em
+
+  &__bottom-buttons
+    display: flex
+    justify-content: center
+    align-items: flex-end
+    margin-top: 15px
+
+  &__bottom-button
+    width: 50%
+    padding: 10px
+    font-size: 1.2em
+    border: none
+    text-align: center
+    text-decoration: none
+    cursor: pointer
+
+    &:first-child
+      border-bottom-left-radius: 5px
+
+    &:last-child
+      border-bottom-right-radius: 5px
+
+    &--submit
+      color: #FFFFFF
+      background: #ff2800
+
+      &:hover, &:focus
+        background: darken(#FF2800, 10)
+        outline: none
+
+    &--back
+      color: #FF2800
+      background: #FFFFFF
+
+      &:hover, &:focus
+        background: darken(#FFFFFF, 10)
+        outline: none
+
+  &__element
+    margin: 0 auto
+    text-align: center
+
+  label, &__label
+    display: block
+    text-align: center
+    margin: 0.5em auto 0.2em
+    color: #444
+    font-weight: lighter
+
+  &__input
+    background: #F0F0F0
+    position: relative
+    width: 90%
+    max-width: 300px
+    margin: 0 auto
+    display: block
+    border: none
+    color: #444
+    text-align: center
+    padding: 9px 5px
+    font-size: 1.1em
+    font-family: 'PT Sans Narrow', sans-serif
+    border-radius: 3px
+    @include shadow(1)
+    transition: 0.2s all ease-in-out
+
+    &--file
+      appearance: none
+
+    &:focus
+      outline: none
+      @include shadow(2)
+
+  &__error
+    text-align: left
+    color: #ff2800
+    width: 90%
+    display: block
+    margin: 5px auto
+    list-style-type: none
+
+  &__error-indicator
+    background: #ff2800
+    border-radius: 2px
+    padding: 1px 4px
+    font-weight: bold
+    font-size: 0.8em
+    user-select: none
+    margin-right: 5px
+    text-transform: uppercase
+    color: #FFFFFF

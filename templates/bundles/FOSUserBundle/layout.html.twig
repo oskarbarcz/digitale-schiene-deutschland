@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="box-container">
+            {% include 'common/header.html.twig' %}
+            <section class="box-element">
+                {% block fos_user_content %}
+                {% endblock %}
+            </section>
+            {% include 'common/footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
