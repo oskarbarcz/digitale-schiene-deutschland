@@ -1,0 +1,9 @@
+"login":
+  "page-title": "Zaloguj się do systemu"
+  "title": "Zaloguj się"
+  "errors":
+    "magnet-reader":
+      "not-found": "Nie znaleziono czytnika kart magnetycznych. Zaloguj się za pomocą loginu i hasła."
+      "configuration-error": "Czytnik nie został skonfigurowany poprawnie. Zaloguj się za pomocą loginu i hasła."
+      "stopped-working": "Czytnik kart magnetycznych przestał działać. Zaloguj się za pomocą loginu i hasła."
+      "turned-off": "Czytnik kart magnetycznych jest wyłączony. Włącz go, aby móc zalogować się kartą."

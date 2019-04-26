@@ -1,3 +1,4 @@
+{% trans_default_domain 'login' %}
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -5,7 +6,7 @@
         <div class="box-container">
             {% include 'common/header.html.twig' %}
             <section class="box-element">
-                <h1 class="box-element__header">Logowanie</h1>
+                <h1 class="box-element__header">{{'login.title'|trans}}</h1>
                 <p class="box-element__description">Wyświetlono ekran logowania za pomocą karty magnetycznej. Aby
                     zalogować się za pomocą loginu i hasła kliknij <a href="{{path('fos_user_security_login')}}"
                                                                       class="link">tutaj</a>. </p>
@@ -14,7 +15,7 @@
                     <span class="card-module__text">Przyłóż kartę do czytnika</span>
                 </main>
             </section>
-            {% include 'common/flashes.html.twig' %}
+            {% include 'common/flashes.html.twig' with {'domain': 'login'} only %}
             {% include 'common/footer.html.twig' %}
         </div>
     </div>

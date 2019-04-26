@@ -1,30 +1,31 @@
+{% trans_default_domain domain %}
 {% for message in app.session.flashBag.get('message') %}
     <section class="box-element box-element--message">
         <span class="box-element__check fa fa-exclamation-triangle"></span>
-        <span class="box-element__warn-text">Dowolna treść</span>
+        <span class="box-element__warn-text">{{message|trans}}</span>
     </section>
 {% endfor %}
 {% for info in app.session.flashBag.get('info') %}
     <section class="box-element box-element--info">
         <span class="box-element__check fa fa-exclamation-triangle"></span>
-        <span class="box-element__warn-text">Dowolna treść</span>
+        <span class="box-element__warn-text">{{info|trans}}</span>
     </section>
 {% endfor %}
 {% for success in app.session.flashBag.get('success') %}
     <section class="box-element box-element--success">
         <span class="box-element__check fa fa-exclamation-triangle"></span>
-        <span class="box-element__warn-text">Dowolna treść</span>
+        <span class="box-element__warn-text">{{success|trans}}</span>
     </section>
 {% endfor %}
 {% for warning in app.session.flashBag.get('warning') %}
     <section class="box-element box-element--warn">
         <span class="box-element__check fa fa-exclamation-triangle"></span>
-        <span class="box-element__warn-text">Dowolna treść</span>
+        <span class="box-element__warn-text">{{warning|trans}}</span>
     </section>
 {% endfor %}
 {% for error in app.session.flashBag.get('error') %}
     <section class="box-element box-element--error">
         <span class="box-element__check fa fa-exclamation-triangle"></span>
-        <span class="box-element__warn-text">Dowolna treść</span>
+        <span class="box-element__warn-text">{{error|trans}}</span>
     </section>
 {% endfor %}

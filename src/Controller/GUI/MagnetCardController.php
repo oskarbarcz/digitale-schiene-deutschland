@@ -13,12 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MagnetCardController extends AbstractController
 {
+    private const MAGNET_CARD_READER_NOT_FOUND = 'login.errors.magnet-reader.not-found';
+
     /**
      * @Route("/users/login/card", name="fos_user_security_card")
      * @return Response
      */
     public function login(): Response
     {
+        $this->addFlash('warning', self::MAGNET_CARD_READER_NOT_FOUND);
         return $this->render('security/magnet_login.html.twig');
     }
 }
