@@ -13,12 +13,14 @@ security:
       pattern: ^/(_(profiler|wdt)|css|images|ts)/
       security: false
 
-    main:
+    fos_user:
       anonymous: ~
       logout:
         path:   /logout
         target: /logout/confirm
       form_login:
+        login_path: /users/login/form
+        check_path: /users/login/form/check
         csrf_token_generator: security.csrf.token_manager
 
       remember_me:
