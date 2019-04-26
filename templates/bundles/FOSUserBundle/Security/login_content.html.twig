@@ -2,7 +2,7 @@
 
 <h1 class="box-element__header">Logowanie</h1>
 <span class="box-element__description">Wyświetlono ekran logowania za pomocą loginu i hasła. Aby zalogować się za
-    pomocą karty magnetycznej kliknij <a href="{{path('fos_user_security_login')}}" class="link">tu</a>.
+    pomocą karty magnetycznej kliknij <a href="{{path('fos_user_security_card')}}" class="link">tu</a>.
 </span>
 <form action="{{path("fos_user_security_check")}}" method="post">
     {% if csrf_token %}
