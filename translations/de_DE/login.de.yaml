@@ -15,7 +15,7 @@ login:
       submit-text: "Loggen sich ein"
   errors:
     magnet-reader:
-      not-found: "Kein Magnetkartenleser gefunden Loggen Sie sich mit Ihrem Login und Passwort ein."
+      not-found: "Kein Magnetkartenleser gefunden. Loggen Sie sich mit Ihrem Login und Passwort ein."
       configuration-error: "Der Reader wurde nicht richtig konfiguriert. Loggen Sie sich mit Ihrem Login und Passwort ein."
       stopped-working: "Der Magnetkartenleser funktioniert nicht mehr. Loggen Sie sich mit Ihrem Login und Passwort ein."
       turned-off: "Der Magnetkartenleser ist ausgeschaltet. Aktivieren Sie diese Option, um sich mit der Magnetkarte einloggen zu können."

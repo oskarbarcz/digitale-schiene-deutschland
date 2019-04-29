@@ -3,6 +3,7 @@
 namespace App\Controller\GUI;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,5 +20,14 @@ class MenuController extends AbstractController
     public function menu(): Response
     {
         return $this->render('menu.html.twig');
+    }
+
+    /**
+     * @Route("/")
+     * @return RedirectResponse
+     */
+    public function redirectFromMain(): RedirectResponse
+    {
+        return $this->redirectToRoute('gui__menu');
     }
 }
