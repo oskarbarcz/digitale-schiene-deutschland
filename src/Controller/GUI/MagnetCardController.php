@@ -24,4 +24,15 @@ class MagnetCardController extends AbstractController
         $this->addFlash('warning', self::MAGNET_CARD_READER_NOT_FOUND);
         return $this->render('security/magnet_login.html.twig');
     }
+
+    /**
+     * @Route("/login", name="fos_user_security_login_alias")
+     * @return Response
+     */
+    public function loginAlias(): Response
+    {
+        $this->addFlash('message', 'Przeniesiono na ekran logowania');
+        return $this->redirectToRoute('fos_user_security_login');
+
+    }
 }
