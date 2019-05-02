@@ -2,7 +2,6 @@
 
 namespace App\Domain\Timetable;
 
-
 use App\DTO\RailVehicle;
 use App\DTO\Stop;
 use App\Entity\Explicit\TrainService;
