@@ -31,10 +31,12 @@ class Stop
 
     /**
      * @param Station $station
+     * @return Stop
      */
-    public function setStation(Station $station): void
+    public function setStation(Station $station): self
     {
         $this->station = $station;
+        return $this;
     }
 
     /**

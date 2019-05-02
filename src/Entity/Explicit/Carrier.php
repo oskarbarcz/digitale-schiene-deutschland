@@ -62,10 +62,16 @@ class Carrier
      */
     private $motorUnits;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Explicit\TrainService", mappedBy="carrier", orphanRemoval=true)
+     */
+    private $trainServices;
+
     public function __construct()
     {
         $this->engines = new ArrayCollection();
         $this->motorUnits = new ArrayCollection();
+        $this->trainServices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,6 +207,37 @@ class Carrier
             // set the owning side to null (unless already changed)
             if ($motorUnit->getCarrier() === $this) {
                 $motorUnit->setCarrier(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TrainService[]
+     */
+    public function getTrainServices(): Collection
+    {
+        return $this->trainServices;
+    }
+
+    public function addTrainService(TrainService $trainService): self
+    {
+        if (!$this->trainServices->contains($trainService)) {
+            $this->trainServices[] = $trainService;
+            $trainService->setCarrier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTrainService(TrainService $trainService): self
+    {
+        if ($this->trainServices->contains($trainService)) {
+            $this->trainServices->removeElement($trainService);
+            // set the owning side to null (unless already changed)
+            if ($trainService->getCarrier() === $this) {
+                $trainService->setCarrier(null);
             }
         }
 
