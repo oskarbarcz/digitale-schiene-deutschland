@@ -2,6 +2,7 @@
 
 namespace App\Entity\Explicit;
 
+use App\Entity\Infrastructure\Route;
 use App\Entity\Infrastructure\Station;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,6 +24,23 @@ class ScheduleDataHolder
      * @ORM\ManyToMany(targetEntity="App\Entity\Infrastructure\Station")
      */
     private $stations;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Route")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $route;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Explicit\TrainService")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $service;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $relationNumber;
 
     public function __construct()
     {
@@ -56,6 +74,42 @@ class ScheduleDataHolder
         if ($this->stations->contains($station)) {
             $this->stations->removeElement($station);
         }
+
+        return $this;
+    }
+
+    public function getRoute(): ?Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?Route $route): self
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
+    public function getService(): ?TrainService
+    {
+        return $this->service;
+    }
+
+    public function setService(?TrainService $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    public function getRelationNumber(): ?int
+    {
+        return $this->relationNumber;
+    }
+
+    public function setRelationNumber(int $relationNumber): self
+    {
+        $this->relationNumber = $relationNumber;
 
         return $this;
     }

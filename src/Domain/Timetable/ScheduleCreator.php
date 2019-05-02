@@ -3,30 +3,39 @@
 namespace App\Domain\Timetable;
 
 
+use App\Entity\Explicit\ScheduleDataHolder;
 use App\Entity\Infrastructure\Station;
-use DateInterval;
 
 /**
- * TimetableCreator
+ * Creates complete and valid schedule object
  *
  * @package App\Domain\Timetable
  */
-class ScheduleCreator
+final class ScheduleCreator
 {
+    /**
+     * Private constructor to prevent object creation
+     */
+    private function __construct()
+    {
+    }
 
     /**
-     * @param Station[] $stations
+     * @param ScheduleDataHolder $scheduleDataHolder
      * @return Schedule
      */
-    public static function createFromGlobals(array $stations): Schedule
+    public static function createFromStub(ScheduleDataHolder $scheduleDataHolder): Schedule
     {
-
-
         return new Schedule();
     }
 
-    public function getTime(Station $stationA, Station $stationB): DateInterval
+    /**
+     * @param Station[] $stations
+     * @param string    $relation
+     * @return Schedule
+     */
+    public static function createFromRaw(array $stations, string $relation): Schedule
     {
-
+        return new Schedule();
     }
 }
