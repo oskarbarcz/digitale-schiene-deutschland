@@ -20,7 +20,7 @@ class TestController extends AbstractController
     /**
      * @Route("/pdf")
      */
-    public function pdf(Pdf $pdf)
+    public function pdf($pdf)
     {
         $html = $this->renderView('pdf/pdf_base.twig');
 
