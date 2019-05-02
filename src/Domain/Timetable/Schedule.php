@@ -27,6 +27,9 @@ class Schedule
     /** @var Route */
     private $route;
 
+    /** @var string */
+    private $relationNumber;
+
     /**
      * @return Stop[]
      */
@@ -96,6 +99,24 @@ class Schedule
     public function setRoute(Route $route): self
     {
         $this->route = $route;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRelationNumber(): string
+    {
+        return $this->relationNumber;
+    }
+
+    /**
+     * @param string $relationNumber
+     * @return Schedule
+     */
+    public function setRelationNumber(string $relationNumber): Schedule
+    {
+        $this->relationNumber = $relationNumber;
         return $this;
     }
 }

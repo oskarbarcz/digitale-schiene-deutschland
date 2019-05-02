@@ -69,13 +69,13 @@ class Test extends AbstractController
                      ->setName('Station A')
                      ->setStation($stationA);
         $stationA->setShortName('Station A')
-            ->setTrackObject($trackObjectA);
+                 ->setTrackObject($trackObjectA);
 
         $trackObjectB->setType($type)
-            ->setRoute($route)
-            ->setKilometer(20.0)
-            ->setName('Station B')
-            ->setStation($stationB);
+                     ->setRoute($route)
+                     ->setKilometer(20.0)
+                     ->setName('Station B')
+                     ->setStation($stationB);
         $stationB->setShortName('Station B')
                  ->setTrackObject($trackObjectB);
 
@@ -93,13 +93,11 @@ class Test extends AbstractController
 
         $distanceAB->setStationA($stationA)
                    ->setStationB($stationB)
-                   ->setDistance(20000)
-                   ->setMinutes(10);
+                   ->setDistance(20000);
 
         $distanceBC->setStationA($stationB)
                    ->setStationB($stationC)
-                   ->setDistance(30000)
-                   ->setMinutes(15);
+                   ->setDistance(30000);
 
         $stop1 = new Stop();
         $stop2 = new Stop();
@@ -122,7 +120,7 @@ class Test extends AbstractController
         $timetable = new Schedule();
         $timetable->setRoute($route)
                   ->setStops($stops)
-                  ->setTrainService();
+                  ->setTrainService($service);
 
 
     }
