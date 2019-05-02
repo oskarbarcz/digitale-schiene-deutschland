@@ -4,6 +4,7 @@ namespace App\Domain\Timetable;
 
 
 use App\Entity\Infrastructure\Station;
+use DateInterval;
 
 /**
  * TimetableCreator
@@ -22,5 +23,10 @@ class ScheduleCreator
 
 
         return new Schedule();
+    }
+
+    public function getTime(Station $stationA, Station $stationB): DateInterval
+    {
+
     }
 }

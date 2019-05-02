@@ -6,7 +6,7 @@ namespace App\Controller\RestAPI;
 use App\Domain\Timetable\Schedule;
 use App\DTO\Stop;
 use App\Entity\Explicit\Carrier;
-use App\Entity\Explicit\Distance;
+use App\Entity\Explicit\Connection;
 use App\Entity\Explicit\TrackObjectType;
 use App\Entity\Explicit\TrainService;
 use App\Entity\Infrastructure\Route;
@@ -60,8 +60,8 @@ class Test extends AbstractController
         $stationB = new Station();
         $stationC = new Station();
 
-        $distanceAB = new Distance();
-        $distanceBC = new Distance();
+        $distanceAB = new Connection();
+        $distanceBC = new Connection();
 
         $trackObjectA->setType($type)
                      ->setRoute($route)
@@ -93,12 +93,12 @@ class Test extends AbstractController
 
         $distanceAB->setStationA($stationA)
                    ->setStationB($stationB)
-                   ->setMeters(20000)
+                   ->setDistance(20000)
                    ->setMinutes(10);
 
         $distanceBC->setStationA($stationB)
                    ->setStationB($stationC)
-                   ->setMeters(30000)
+                   ->setDistance(30000)
                    ->setMinutes(15);
 
         $stop1 = new Stop();

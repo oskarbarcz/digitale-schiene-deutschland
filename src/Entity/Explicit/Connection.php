@@ -3,12 +3,13 @@
 namespace App\Entity\Explicit;
 
 use App\Entity\Infrastructure\Station;
+use DateInterval;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Explicit\DistanceRepository")
  */
-class Distance
+class Connection
 {
     /**
      * @ORM\Id()
@@ -20,12 +21,7 @@ class Distance
     /**
      * @ORM\Column(type="integer")
      */
-    private $meters;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $minutes;
+    private $distance;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Infrastructure\Station")
@@ -39,31 +35,24 @@ class Distance
      */
     private $stationB;
 
+    /**
+     * @ORM\Column(type="dateinterval")
+     */
+    private $time;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMeters(): ?int
+    public function getDistance(): ?int
     {
-        return $this->meters;
+        return $this->distance;
     }
 
-    public function setMeters(int $meters): self
+    public function setDistance(int $distance): self
     {
-        $this->meters = $meters;
-
-        return $this;
-    }
-
-    public function getMinutes(): ?int
-    {
-        return $this->minutes;
-    }
-
-    public function setMinutes(int $minutes): self
-    {
-        $this->minutes = $minutes;
+        $this->distance = $distance;
 
         return $this;
     }
@@ -88,6 +77,18 @@ class Distance
     public function setStationB(?Station $stationB): self
     {
         $this->stationB = $stationB;
+
+        return $this;
+    }
+
+    public function getTime(): ?DateInterval
+    {
+        return $this->time;
+    }
+
+    public function setTime(DateInterval $time): self
+    {
+        $this->time = $time;
 
         return $this;
     }
