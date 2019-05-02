@@ -3,9 +3,12 @@
 namespace App\Controller\RestAPI;
 
 
+use App\Domain\Timetable\Schedule;
 use App\DTO\Stop;
+use App\Entity\Explicit\Carrier;
 use App\Entity\Explicit\Distance;
 use App\Entity\Explicit\TrackObjectType;
+use App\Entity\Explicit\TrainService;
 use App\Entity\Infrastructure\Route;
 use App\Entity\Infrastructure\Station;
 use App\Entity\Infrastructure\TrackObject;
@@ -39,6 +42,17 @@ class Test extends AbstractController
         $type->setName('Abstract Station')
              ->setStyleClass('css');
 
+        $carrier = new Carrier();
+        $carrier->setFullName('Test Carrier')
+                ->setShortName('TestCarrier')
+                ->setCountryIbanCode('TEST')
+                ->setLogoFilePath(null)
+                ->setShortcode('TEST')
+                ->setWebsite('www.test.com');
+
+        $service = new TrainService();
+        $service->setCarrier($carrier);
+
         $trackObjectA = new TrackObject();
         $trackObjectB = new TrackObject();
         $trackObjectC = new TrackObject();
@@ -55,13 +69,13 @@ class Test extends AbstractController
                      ->setName('Station A')
                      ->setStation($stationA);
         $stationA->setShortName('Station A')
-                 ->setTrackObject($trackObjectA);
+            ->setTrackObject($trackObjectA);
 
         $trackObjectB->setType($type)
-                     ->setRoute($route)
-                     ->setKilometer(20.0)
-                     ->setName('Station B')
-                     ->setStation($stationB);
+            ->setRoute($route)
+            ->setKilometer(20.0)
+            ->setName('Station B')
+            ->setStation($stationB);
         $stationB->setShortName('Station B')
                  ->setTrackObject($trackObjectB);
 
@@ -72,6 +86,10 @@ class Test extends AbstractController
                      ->setStation($stationC);
         $stationC->setShortName('Station C')
                  ->setTrackObject($trackObjectC);
+
+        $route->addTrackObject($trackObjectA)
+              ->addTrackObject($trackObjectB)
+              ->addTrackObject($trackObjectC);
 
         $distanceAB->setStationA($stationA)
                    ->setStationB($stationB)
@@ -89,7 +107,7 @@ class Test extends AbstractController
 
         $stop1->setStation($stationA)
               ->setArrivalTime($startTime)
-              ->setDepartureTime($startTime->add('10 min'));
+              ->setDepartureTime($startTime);
 
         $stop2->setStation($stationB)
               ->setArrivalTime($arrivalTime)
@@ -98,6 +116,13 @@ class Test extends AbstractController
         $stop3->setStation($stationB)
               ->setArrivalTime($arrivalTime)
               ->setDepartureTime($departureTime);
+
+        $stops = [$stop1, $stop2, $stop3];
+
+        $timetable = new Schedule();
+        $timetable->setRoute($route)
+                  ->setStops($stops)
+                  ->setTrainService();
 
 
     }

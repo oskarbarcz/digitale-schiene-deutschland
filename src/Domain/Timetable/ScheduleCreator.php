@@ -3,6 +3,8 @@
 namespace App\Domain\Timetable;
 
 
+use App\Entity\Infrastructure\Station;
+
 /**
  * TimetableCreator
  *
@@ -10,8 +12,15 @@ namespace App\Domain\Timetable;
  */
 class ScheduleCreator
 {
-    public static function createFromGlobals()
+
+    /**
+     * @param Station[] $stations
+     * @return Schedule
+     */
+    public static function createFromGlobals(array $stations): Schedule
     {
 
+
+        return new Schedule();
     }
 }
