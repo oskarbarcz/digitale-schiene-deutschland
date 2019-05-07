@@ -14,10 +14,9 @@ use FOS\RestBundle\View\View;
 /**
  * Test
  *
- *
  * @package App\Controller\RestAPI
  */
-class Test extends AbstractFOSRestController
+class TestController extends AbstractFOSRestController
 {
     /** @var ScheduleCreator */
     protected $scheduleCreator;
@@ -38,16 +37,19 @@ class Test extends AbstractFOSRestController
 
     /**
      * @Rest\View()
-     * @Rest\Get("/api/test/dupa")
-     *
+     * @Rest\Get("/api/test/dupa/{id}")
+     *10
      * @return View
      * @throws Exception
      */
-    public function index(): View
+    public function index(int $id): View
     {
-        $scheduleDataHolder = $this->entityManager->find(ScheduleDataHolder::class, 1);
+        $scheduleDataHolder = $this->entityManager->find(ScheduleDataHolder::class, $id);
+        if (!$scheduleDataHolder instanceof ScheduleDataHolder) {
+            return View::create('NO.');
+        }
 
-        $schedule = $this->scheduleCreator->createFromStub($scheduleDataHolder);
+        $schedule = $this->scheduleCreator->create($scheduleDataHolder);
 
         return View::create($schedule);
 

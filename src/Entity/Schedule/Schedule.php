@@ -25,7 +25,7 @@ class Schedule
     /** @var Route */
     private $route;
 
-    /** @var string */
+    /** @var int */
     private $relationNumber;
 
     /**
@@ -101,18 +101,18 @@ class Schedule
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getRelationNumber(): string
+    public function getRelationNumber(): int
     {
         return $this->relationNumber;
     }
 
     /**
-     * @param string $relationNumber
+     * @param int $relationNumber
      * @return Schedule
      */
-    public function setRelationNumber(string $relationNumber): Schedule
+    public function setRelationNumber(int $relationNumber): Schedule
     {
         $this->relationNumber = $relationNumber;
         return $this;
