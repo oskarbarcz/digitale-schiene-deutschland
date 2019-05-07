@@ -77,7 +77,7 @@ class ScheduleCreator
             }
 
             // try to find connection between previous and current station
-            $connection = $this->connectionFinder->find($stations[$order - 1], $currentStation);
+            $connection = $this->connectionFinder->findDirect($stations[$order - 1], $currentStation);
             $arrivalTime = $this->lastDepartureTime->add($connection->getTime());
 
             $stops[] = $this->createStop($currentStation, $arrivalTime);
