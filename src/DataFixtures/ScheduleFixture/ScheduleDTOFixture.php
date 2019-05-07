@@ -49,6 +49,7 @@ class ScheduleDTOFixture extends Fixture implements FixtureGroupInterface, Depen
 
         $stationA = $this->stationRepository->findOneBy(['shortName' => 'Station A']);
         $stationB = $this->stationRepository->findOneBy(['shortName' => 'Station B']);
+        $stationC = $this->stationRepository->findOneBy(['shortName' => 'Station C']);
 
         $service = $this->trainServiceRepository->findOneBy(['code' => 'IC']);
 
@@ -59,7 +60,8 @@ class ScheduleDTOFixture extends Fixture implements FixtureGroupInterface, Depen
             ->setService($service)
             ->setStartTime(new DateTime('now'))
             ->addStation($stationA)
-            ->addStation($stationB);
+            ->addStation($stationB)
+            ->addStation($stationC);
 
         $manager->persist($DTO);
         $manager->flush();
