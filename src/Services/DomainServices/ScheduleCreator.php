@@ -1,15 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace App\Domain\Timetable;
+namespace App\Services\DomainServices;
 
-
-use App\DTO\RailVehicle;
 use App\DTO\Stop;
-use App\Entity\Explicit\Connection;
-use App\Entity\Explicit\ScheduleDataHolder;
-use App\Entity\Explicit\TrainService;
-use App\Entity\Infrastructure\Route;
-use App\Entity\Infrastructure\Station;
+use App\Entity\Schedule\Schedule;
+use App\Entity\Schedule\ScheduleDataHolder;
 use DateInterval;
 use Exception;
 
@@ -18,7 +13,7 @@ use Exception;
  *
  * @package App\Domain\Timetable
  */
-final class ScheduleCreator
+class ScheduleCreator
 {
     /** @var ConnectionFinder */
     protected $connectionFinder;
@@ -106,25 +101,5 @@ final class ScheduleCreator
                  ->setRailVehicle(null);
 
         return $schedule;
-    }
-
-    /**
-     * @param Station[]    $stations
-     * @param string       $relation
-     * @param RailVehicle  $railVehicle
-     * @param Route        $route
-     * @param TrainService $trainService
-     * @param Connection[] $connections
-     * @return Schedule
-     */
-    public static function createFromRaw(
-        array $stations,
-        string $relation,
-        RailVehicle $railVehicle,
-        Route $route,
-        TrainService $trainService,
-        array $connections
-    ): Schedule {
-        return new Schedule();
     }
 }

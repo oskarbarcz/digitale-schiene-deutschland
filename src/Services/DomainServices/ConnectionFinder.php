@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Domain\Timetable;
+namespace App\Services\DomainServices;
 
 
 use App\Entity\Explicit\Connection;

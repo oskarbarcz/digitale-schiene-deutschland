@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Explicit;
+namespace App\Entity\Schedule;
 
 use App\Entity\Infrastructure\Route;
 use App\Entity\Infrastructure\Station;

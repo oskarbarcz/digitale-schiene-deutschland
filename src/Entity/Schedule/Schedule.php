@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Domain\Timetable;
+namespace App\Entity\Schedule;
 
 use App\DTO\RailVehicle;
-use App\DTO\Stop;
 use App\Entity\Explicit\TrainService;
 use App\Entity\Infrastructure\Route;
 
@@ -12,7 +11,7 @@ use App\Entity\Infrastructure\Route;
  *
  * @package App\Domain\Timetable
  */
-final class Schedule
+class Schedule
 {
     /** @var Stop[] all stops on route */
     private $stops;
