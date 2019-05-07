@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\Explicit\ScheduleDataHolderRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\Schedule\ScheduleDataHolderRepository")
  */
 class ScheduleDataHolder
 {
