@@ -2,6 +2,7 @@
 
 namespace App\Entity\Schedule;
 
+use App\Entity\Explicit\TrainService;
 use App\Entity\Infrastructure\Route;
 use App\Entity\Infrastructure\Station;
 use DateTime;

@@ -3,8 +3,8 @@
 namespace App\Controller\RestAPI;
 
 
-use App\Domain\Timetable\ScheduleCreator;
-use App\Entity\Explicit\ScheduleDataHolder;
+use App\Entity\Schedule\ScheduleDataHolder;
+use App\Services\DomainServices\ScheduleCreator;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use FOS\RestBundle\Controller\AbstractFOSRestController;

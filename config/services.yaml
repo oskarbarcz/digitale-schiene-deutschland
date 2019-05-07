@@ -30,3 +30,8 @@ services:
   # please note that last definitions always *replace* previous ones
   App\Services\DomainServices\ScheduleCreator:
     autowire: true
+    arguments:
+      - App\Services\DomainServices\ConnectionFinder
+
+  App\Services\DomainServices\ConnectionFinder:
+    autowire: true

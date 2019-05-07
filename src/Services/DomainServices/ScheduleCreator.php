@@ -2,9 +2,9 @@
 
 namespace App\Services\DomainServices;
 
-use App\DTO\Stop;
 use App\Entity\Schedule\Schedule;
 use App\Entity\Schedule\ScheduleDataHolder;
+use App\Entity\Schedule\Stop;
 use DateInterval;
 use Exception;
 
@@ -29,7 +29,7 @@ class ScheduleCreator
      *
      * @param ConnectionFinder $connectionFinder
      */
-    private function __construct(ConnectionFinder $connectionFinder)
+    public function __construct(ConnectionFinder $connectionFinder)
     {
         $this->connectionFinder = $connectionFinder;
     }

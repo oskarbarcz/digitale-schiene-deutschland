@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures\ScheduleFixture;
 
-use App\Entity\Explicit\ScheduleDataHolder;
+use App\Entity\Schedule\ScheduleDataHolder;
 use App\Repository\Explicit\TrainServiceRepository;
 use App\Repository\Infrastructure\RouteRepository;
 use App\Repository\Infrastructure\StationRepository;
