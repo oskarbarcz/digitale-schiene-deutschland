@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1> WSZYSTKIE STACJE</h1>
+    <ul>
+        {% for stop in stops %}
+            <li>Przyj. {{stop.arrivalTime.format("HH:ii")}}, Odj. {{stop.departureTime.format("HH:ii")}} |
+                {{stop.station.shortName}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
