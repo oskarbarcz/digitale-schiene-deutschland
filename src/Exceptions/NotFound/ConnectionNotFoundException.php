@@ -3,6 +3,7 @@
 namespace App\Exceptions\NotFound;
 
 use Doctrine\ORM\EntityNotFoundException;
+use Exception;
 
 /**
  * TrackObjectTypeNotFound
@@ -11,5 +12,8 @@ use Doctrine\ORM\EntityNotFoundException;
  */
 class ConnectionNotFoundException extends EntityNotFoundException
 {
-    public const MESSAGE = 'connection.not-found';
+    public function __construct(Exception $previous = null)
+    {
+        parent::__construct(null, null, $previous);
+    }
 }

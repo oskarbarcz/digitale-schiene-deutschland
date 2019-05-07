@@ -39,7 +39,7 @@ class ConnectionFinder
     {
         $connection = $this->repository->findOneBy(['stationA' => $stationA, 'stationB' => $stationB]);
         if (!$connection instanceof Connection) {
-            throw new NotFound(NotFound::MESSAGE);
+            throw new NotFound();
         }
         return $connection;
     }
