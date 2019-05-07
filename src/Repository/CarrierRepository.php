@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Carrier;
+use App\Entity\Explicit\Carrier;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 

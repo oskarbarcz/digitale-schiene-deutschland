@@ -4,6 +4,7 @@ namespace App\Entity\Explicit;
 
 use App\Entity\Infrastructure\Route;
 use App\Entity\Infrastructure\Station;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,6 +42,11 @@ class ScheduleDataHolder
      * @ORM\Column(type="integer")
      */
     private $relationNumber;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $startTime;
 
     public function __construct()
     {
@@ -110,6 +116,18 @@ class ScheduleDataHolder
     public function setRelationNumber(int $relationNumber): self
     {
         $this->relationNumber = $relationNumber;
+
+        return $this;
+    }
+
+    public function getStartTime(): DateTime
+    {
+        return $this->startTime;
+    }
+
+    public function setStartTime(DateTime $startTime): self
+    {
+        $this->startTime = $startTime;
 
         return $this;
     }

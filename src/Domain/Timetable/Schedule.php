@@ -12,7 +12,7 @@ use App\Entity\Infrastructure\Route;
  *
  * @package App\Domain\Timetable
  */
-class Schedule
+final class Schedule
 {
     /** @var Stop[] all stops on route */
     private $stops;

@@ -10,38 +10,14 @@ use Doctrine\Common\Persistence\ObjectManager;
 class TrackObjectTypeFixtures extends Fixture implements FixtureGroupInterface
 {
     private const DATA = [
-        [
-            'name'       => 'Station with A category',
-            'styleClass' => '--station-big',
-        ],
-        [
-            'name'       => 'S-Bahn only station',
-            'styleClass' => '--station-sbahn',
-        ],
-        [
-            'name'       => 'All other stations',
-            'styleClass' => '--station',
-        ],
-        [
-            'name'       => 'Former station',
-            'styleClass' => '--station-former',
-        ],
-        [
-            'name'       => 'Highway under or above the track',
-            'styleClass' => '--highway',
-        ],
-        [
-            'name'       => 'National road',
-            'styleClass' => '--national-road',
-        ],
-        [
-            'name'       => 'Railway infrastructure',
-            'styleClass' => '--railway',
-        ],
-        [
-            'name'       => 'River or other bridge over water',
-            'styleClass' => '--river',
-        ],
+        ['Station with A category', '--station-big',],
+        ['S-Bahn only station', '--station-sbahn',],
+        ['All other stations', '--station',],
+        ['Former station', '--station-former',],
+        ['Highway under or above the track', '--highway',],
+        ['National road', '--national-road',],
+        ['Railway infrastructure', '--railway',],
+        ['River or other bridge over water', '--river',],
     ];
 
     /**
@@ -60,8 +36,8 @@ class TrackObjectTypeFixtures extends Fixture implements FixtureGroupInterface
     {
         foreach (self::DATA as $source) {
             $trackObjectType = new TrackObjectType();
-            $trackObjectType->setName($source['name'])
-                            ->setStyleClass($source['styleClass']);
+            $trackObjectType->setName($source[0])
+                            ->setStyleClass($source[1]);
             $manager->persist($trackObjectType);
         }
 

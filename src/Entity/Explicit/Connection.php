@@ -7,7 +7,7 @@ use DateInterval;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\Explicit\DistanceRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\Explicit\ConnectionRepository")
  */
 class Connection
 {
@@ -74,14 +74,14 @@ class Connection
         return $this->stationB;
     }
 
-    public function setStationB(?Station $stationB): self
+    public function setStationB(Station $stationB): self
     {
         $this->stationB = $stationB;
 
         return $this;
     }
 
-    public function getTime(): ?DateInterval
+    public function getTime(): DateInterval
     {
         return $this->time;
     }

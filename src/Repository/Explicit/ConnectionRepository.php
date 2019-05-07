@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Connection[]    findAll()
  * @method Connection[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DistanceRepository extends ServiceEntityRepository
+class ConnectionRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {

@@ -5,6 +5,7 @@ namespace App\Domain\Timetable;
 
 use App\Entity\Explicit\Connection;
 use App\Entity\Infrastructure\Station;
+use App\Repository\Explicit\ConnectionRepository;
 
 /**
  * ConnectionFinder
@@ -13,13 +14,21 @@ use App\Entity\Infrastructure\Station;
  */
 class ConnectionFinder
 {
+    /** @var ConnectionRepository */
+    protected $repository;
+
+    public function __construct(ConnectionRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param Station $stationA
      * @param Station $stationB
-     * @return Connection
+     * @return Connection|null
      */
-    public static function find(Station $stationA, Station $stationB): Connection
+    public function find(Station $stationA, Station $stationB): ?Connection
     {
-        return new Connection();
+        return $this->repository->findOneBy(['stationA' => $stationA, 'stationB' => $stationB]);
     }
 }
