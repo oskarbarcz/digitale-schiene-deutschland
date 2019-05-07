@@ -108,14 +108,14 @@ class ScheduleCreator
      */
     private function createStop(Station $station, DateTime $arrivalTime): Stop
     {
-        $departureTime = $arrivalTime->add($this->stopInterval);
         $stop = new Stop();
         $stop->setStation($station)
-             ->setArrivalTime($arrivalTime)
-             ->setDepartureTime($departureTime);
+             ->setArrivalTime($arrivalTime);
+        $arrivalTime = clone $arrivalTime;
+        $stop->setDepartureTime($arrivalTime->add($this->stopInterval));
 
         // cloning, not assigning
-        $this->lastDepartureTime = clone $departureTime;
+        $this->lastDepartureTime = clone $stop->getDepartureTime();
         return $stop;
     }
 }
