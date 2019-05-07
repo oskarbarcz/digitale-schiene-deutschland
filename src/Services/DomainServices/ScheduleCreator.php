@@ -7,6 +7,7 @@ use App\Entity\Infrastructure\Station;
 use App\Entity\Schedule\Schedule;
 use App\Entity\Schedule\ScheduleDataHolder;
 use App\Entity\Schedule\Stop;
+use App\Exceptions\NotFound\NoEnoughStationsException;
 use DateInterval;
 use DateTime;
 use Exception;
@@ -62,8 +63,9 @@ class ScheduleCreator
         $stops = [];
         $stations = $scheduleDataHolder->getStations();
 
+        // if less than 2 stations, creating schedule is impossible
         if (count($stations) < 2) {
-            die('nie ma stacji');
+            throw new NoEnoughStationsException();
         }
 
         // else try to build schedule
@@ -111,7 +113,7 @@ class ScheduleCreator
              ->setArrivalTime($arrivalTime)
              ->setDepartureTime($departureTime);
 
-        // cloning, not a
+        // cloning, not assigning
         $this->lastDepartureTime = clone $departureTime;
         return $stop;
     }
