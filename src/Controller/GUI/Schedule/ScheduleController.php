@@ -34,6 +34,6 @@ class ScheduleController extends AbstractController
     public function index(ScheduleDataHolder $scheduleDataHolder): Response
     {
         $schedule = $this->scheduleCreator->create($scheduleDataHolder);
-        return $this->render('schedule/basic.html.twig', ['stops' => $schedule->getStops()]);
+        return $this->render('schedule/basic.html.twig', ['schedule' => $schedule]);
     }
 }

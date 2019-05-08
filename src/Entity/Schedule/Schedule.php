@@ -13,6 +13,9 @@ use App\Entity\Infrastructure\Route;
  */
 class Schedule
 {
+    /** @var int scheduleDataHolder ID */
+    private $id;
+
     /** @var Stop[] all stops on route */
     private $stops;
 
@@ -27,6 +30,24 @@ class Schedule
 
     /** @var int */
     private $relationNumber;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Schedule
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return Stop[]

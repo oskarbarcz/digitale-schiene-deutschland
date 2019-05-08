@@ -69,7 +69,8 @@ class ScheduleCreator
 
         // compose schedule object
         $schedule = new Schedule();
-        $schedule->setStops($stops)
+        $schedule->setId($scheduleDataHolder->getId())
+                 ->setStops($stops)
                  ->setRelationNumber($scheduleDataHolder->getRelationNumber())
                  ->setRoute($scheduleDataHolder->getRoute())
                  ->setTrainService($scheduleDataHolder->getService())
