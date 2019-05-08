@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% set button_cfg = {
+    'link': path('gui__menu'),
+    'icon_a': 'fas fa-chevron-left',
+    'text': 'Back  to searcher'|trans,
+    'icon_b': 'fas fa-list'
+} %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="box-container">
+            {% include 'common/header.html.twig' %}
+            <div class="box-element">
+                <h1 class="box-element__header"> Rozkład jazdy nr {{schedule.id}}</h1>
+                <span class="box-element__subheader">dla poc. {{schedule.trainService.code}}{{schedule.relationNumber}}</span>
+                <ul class="schedule">
+                    {% for stop in schedule.stops %}
+                        <li class="schedule__each">
+                            <div class="schedule__times">
+                                <div class="schedule__time">
+                                    <sup class="schedule__subtitle">Przyj.</sup>
+                                    <span class="schedule__hour">{{stop.arrivalTime.format("H:i")}}</span>
+                                </div>
+                                <div class="schedule__time">
+                                    <sup class="schedule__subtitle">Odj.</sup>
+                                    <span class="schedule__hour">{{stop.departureTime.format("H:i")}} </span>
+                                </div>
+                            </div>
+                            <span class="schedule__station">{{stop.station.shortName}}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <section class="box-element">
+                {% include 'common/back-button.html.twig' with button_cfg only %}
+            </section>
+            {% include 'common/footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
