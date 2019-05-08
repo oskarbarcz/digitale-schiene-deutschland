@@ -4,6 +4,7 @@ namespace App\Entity\Schedule;
 
 use App\Entity\Infrastructure\Station;
 use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Stop
@@ -12,14 +13,24 @@ use DateTime;
  */
 class Stop
 {
-    /** @var Station valid station object */
+    /**
+     * @var Station valid station object
+     */
     private $station;
 
-    /** @var DateTime time then trainset arrives at the Station */
+    /**
+     * @var DateTime time then trainset arrives at the Station
+     * @Assert\Type(type="DateTime", message="stop.date-time")
+     */
     private $arrivalTime;
 
-    /** @var DateTime time when train departs from the Station */
+    /**
+     * @var DateTime time when train departs from the Station
+     * @Assert\Type(type="DateTime", message="stop.date-time")
+     */
     private $departureTime;
+
+    // <editor-fold desc="GETTERS AND SETTERS">
 
     /**
      * @return Station
@@ -74,4 +85,19 @@ class Stop
         $this->departureTime = $departureTime;
         return $this;
     }
+
+    // </editor-fold>
+    // <editor-fold desc="VALIDATION">
+    /**
+     * Checks if arrival is set after departure
+     * @Assert\IsTrue(message="stop.departure-after-arrival")
+     *
+     * @return bool
+     */
+    protected function isDepartureAfterArrival(): bool
+    {
+        return ((int)$this->arrivalTime > (int)$this->departureTime);
+    }
+    // </editor-fold>
+
 }

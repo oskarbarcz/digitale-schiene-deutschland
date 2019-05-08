@@ -4,9 +4,9 @@ namespace App\Controller\RestAPI;
 
 
 use App\Entity\Schedule\ScheduleDataHolder;
+use App\Exceptions\NotFound\NoEnoughStationsException;
 use App\Services\DomainServices\ScheduleCreator;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -38,9 +38,9 @@ class TestController extends AbstractFOSRestController
     /**
      * @Rest\View()
      * @Rest\Get("/api/test/dupa/{id}")
-     *10
+     * @param int $id
      * @return View
-     * @throws Exception
+     * @throws NoEnoughStationsException
      */
     public function index(int $id): View
     {

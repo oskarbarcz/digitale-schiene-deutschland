@@ -7,6 +7,7 @@ use App\Entity\Infrastructure\Station;
 use App\Entity\Schedule\Schedule;
 use App\Entity\Schedule\ScheduleDataHolder;
 use App\Entity\Schedule\Stop;
+use App\Exceptions\NotFound\ConnectionNotFoundException;
 use App\Exceptions\NotFound\NoEnoughStationsException;
 use DateInterval;
 use DateTime;
@@ -61,30 +62,8 @@ class ScheduleCreator
      */
     public function create(ScheduleDataHolder $scheduleDataHolder): Schedule
     {
-        $stops = [];
-        $stations = $scheduleDataHolder->getStations();
-
-        // if less than 2 stations, creating schedule is impossible
-        if (count($stations) < 2) {
-            throw new NoEnoughStationsException();
-        }
-
-        // else try to build schedule
-        foreach ($stations as $order => $currentStation) {
-            //on first iteration
-            if ($order === 0) {
-                // add first stop with start delay time
-                $startTime = $scheduleDataHolder->getStartTime()->add($this->departureDelay);
-                $stops[] = $this->createStop($currentStation, $startTime);
-                continue;
-            }
-
-            // try to find connection between previous and current station
-            $connection = $this->connectionFinder->findDirect($stations[$order - 1], $currentStation);
-            $arrivalTime = $this->lastDepartureTime->add($connection->getTime());
-
-            $stops[] = $this->createStop($currentStation, $arrivalTime);
-        }
+        $stations = $scheduleDataHolder->getStations()->toArray();
+        $stops = $this->assign($stations, $scheduleDataHolder->getStartTime());
 
         $railV = new RailVehicle();
 
@@ -97,6 +76,47 @@ class ScheduleCreator
                  ->setRailVehicle($railV);
 
         return $schedule;
+    }
+
+    /**
+     * Converts stations to stops with given start time
+     *
+     * @param Station[] $stations
+     * @param DateTime  $startTime
+     * @return Stop[]
+     * @throws ConnectionNotFoundException
+     * @throws NoEnoughStationsException
+     */
+    private function assign(array $stations, DateTime $startTime = null): array
+    {
+        // if start time not provided, start now
+        if (!$startTime) {
+            $startTime = new DateTime();
+        }
+
+        // if less than 2 stations, creating schedule is impossible
+        if (count($stations) < 2) {
+            throw new NoEnoughStationsException();
+        }
+
+        $stops = [];
+
+        // else try to build schedule
+        foreach ($stations as $order => $currentStation) {
+            //on first iteration
+            if ($order === 0) {
+                // add first stop with start delay time
+                $startTime = $startTime->add($this->departureDelay);
+                $stops[] = $this->createStop($currentStation, $startTime);
+                continue;
+            }
+            // try to find connection between previous and current station
+            $connection = $this->connectionFinder->findDirect($stations[$order - 1], $currentStation);
+            $arrivalTime = $this->lastDepartureTime->add($connection->getTime());
+            $stops[] = $this->createStop($currentStation, $arrivalTime);
+        }
+
+        return $stops;
     }
 
     /**
