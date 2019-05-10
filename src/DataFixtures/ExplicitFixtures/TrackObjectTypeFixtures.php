@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataFixtures\ProductionFixtures;
+namespace App\DataFixtures\ExplicitFixtures;
 
 use App\Entity\Explicit\TrackObjectType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -28,7 +28,7 @@ class TrackObjectTypeFixtures extends Fixture implements FixtureGroupInterface
      */
     public static function getGroups(): array
     {
-        return ['dev', 'prod'];
+        return ['all', 'route', 'basic-func', 'explicit-only'];
     }
 
     /** @inheritDoc */

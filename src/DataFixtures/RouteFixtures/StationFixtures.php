@@ -1,8 +1,7 @@
 <?php
 
-namespace App\DataFixtures\TestFixtures;
+namespace App\DataFixtures\RouteFixtures;
 
-use App\DataFixtures\ProductionFixtures\RouteFixtures;
 use App\Entity\Infrastructure\Station;
 use App\Entity\Infrastructure\TrackObject;
 use App\Services\EntityServices\RouteService;
@@ -51,8 +50,8 @@ class StationFixtures extends Fixture implements DependentFixtureInterface
                 // if station
                 $station = new Station();
                 $station->setTrackObject($object)
-                    ->setFullName($lname . $id)
-                    ->setShortName($sname . $id);
+                        ->setFullName($lname . $id)
+                        ->setShortName($sname . $id);
                 $manager->persist($station);
 
             }

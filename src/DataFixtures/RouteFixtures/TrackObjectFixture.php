@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataFixtures\TestFixtures;
+namespace App\DataFixtures\RouteFixtures;
 
 use App\Entity\Infrastructure\TrackObject;
 use App\Services\EntityServices\RouteService;
@@ -26,7 +26,8 @@ class TrackObjectFixture extends Fixture
     /** @var TrackObjectTypeService */
     protected $trackObjectTypeService;
 
-    private const AMOUNT = 4;
+    /** @var int */
+    private $amount = 4;
 
     public function __construct(RouteService $routeService, TrackObjectTypeService $trackObjectTypeService)
     {
@@ -42,17 +43,15 @@ class TrackObjectFixture extends Fixture
         $name = 'Example Track Object #';
         $types = $this->trackObjectTypeService->getAll();
         $routes = $this->routeService->getAll();
-        $i = self::AMOUNT;
-
         $objects = [];
-        while ($i > 0) {
+        while ($this->amount > 0) {
             foreach ($types as $id_t => $type) {
                 foreach ($routes as $id_r => $route) {
                     $max = floor($route->getLength() / 1000);
                     $max *= 1000;
                     // object definition
                     $object = new TrackObject();
-                    $object->setName($name . $i . $id_r . $id_t)
+                    $object->setName($name . $this->amount . $id_r . $id_t)
                         // set precision to hungreds meters
                            ->setKilometer(random_int(1, $max))
                            ->setRoute($route)
@@ -60,7 +59,7 @@ class TrackObjectFixture extends Fixture
                     $objects[] = $object;
                 }
             }
-            $i--;
+            $this->amount--;
         }
 
         // shuffle them
