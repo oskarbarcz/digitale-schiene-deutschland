@@ -16,15 +16,13 @@
                 <ul class="schedule">
                     {% for stop in schedule.stops %}
                         <li class="schedule__each">
-                            <div class="schedule__times">
-                                <div class="schedule__time">
-                                    <sup class="schedule__subtitle">Przyj.</sup>
-                                    <span class="schedule__hour">{{stop.arrivalTime.format("H:i")}}</span>
-                                </div>
-                                <div class="schedule__time">
-                                    <sup class="schedule__subtitle">Odj.</sup>
-                                    <span class="schedule__hour">{{stop.departureTime.format("H:i")}} </span>
-                                </div>
+                            <div class="schedule__time">
+                                <sup class="schedule__subtitle">Przyj.</sup>
+                                <span class="schedule__hour">{{stop.arrivalTime.format("H:i")}}</span>
+                            </div>
+                            <div class="schedule__time">
+                                <sup class="schedule__subtitle">Odj.</sup>
+                                <span class="schedule__hour">{{stop.departureTime.format("H:i")}} </span>
                             </div>
                             <span class="schedule__station">{{stop.station.shortName}}</span>
                         </li>
