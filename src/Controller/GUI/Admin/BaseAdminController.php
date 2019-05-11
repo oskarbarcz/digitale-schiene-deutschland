@@ -16,11 +16,11 @@ class BaseAdminController extends AbstractController
     public function __construct() { }
 
     /**
-     * @Route("/admin")
+     * @Route("/admin", name="gui__admin")
      * @return Response
      */
     public function index(): Response
     {
-        return $this->render('admin.html.twig');
+        return $this->render('admin/index.html.twig');
     }
 }

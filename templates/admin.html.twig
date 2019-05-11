@@ -7,6 +7,12 @@
         {% include 'common/side-panel.html.twig' %}
         <div class="admin-content">
             {% include 'common/navigation.html.twig' %}
+            <div class="admin-container">
+                {% block admin_body %}
+                    <h1 class="admin__title">Tytuł ekranu</h1>
+                {% endblock %}
+                <span class="admin-app-title">DigitaleSchieneDeutschland | Deutsche Bahn AG &copy;2019</span>
+            </div>
         </div>
     </div>
 {% endblock %}
