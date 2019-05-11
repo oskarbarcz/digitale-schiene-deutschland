@@ -4,13 +4,7 @@
 {% block title %}{{'admin.page-title'|trans}}{% endblock %}
 {% block body %}
     <div class="admin-wrapper">
-        <div class="side-panel">
-            <div class="side-panel__logo">
-                <img src="{{asset('images/logos/db-logo.png')}}" class="side-panel__image" alt="Application logo"/>
-                <span class="side-panel__text">Netze</span>
-
-            </div>
-        </div>
+        {% include 'common/side-panel.html.twig' %}
         <div class="admin-content">
             {% include 'common/navigation.html.twig' %}
         </div>
