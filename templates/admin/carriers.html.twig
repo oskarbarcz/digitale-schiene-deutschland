@@ -31,15 +31,15 @@
         </tr>
         {% for carrier in carriers %}
             <tr class="list-menu__row">
-                <th class="list-menu__element">{{carrier.ID}}</th>
-                <th class="list-menu__element">{{carrier.logoFilePath}}</th>
-                <th class="list-menu__element">{{carrier.fullName}}</th>
-                <th class="list-menu__element">{{carrier.shortName}}</th>
-                <th class="list-menu__element">{{carrier.countryIbanCode}}</th>
-                <th class="list-menu__element">{{carrier.website}}</th>
-                <th class="list-menu__element">{{carrier.shortcode}}</th>
-                <th class="list-menu__element">Edytuj</th>
-                <th class="list-menu__element">Usuń</th>
+                <td class="list-menu__element">{{carrier.ID}}</td>
+                <td class="list-menu__element">{{carrier.logoFilePath}}</td>
+                <td class="list-menu__element">{{carrier.fullName}}</td>
+                <td class="list-menu__element">{{carrier.shortName}}</td>
+                <td class="list-menu__element">{{carrier.countryIbanCode}}</td>
+                <td class="list-menu__element">{{carrier.website}}</td>
+                <td class="list-menu__element">{{carrier.shortcode}}</td>
+                <td class="list-menu__element"><a href="" class="link">Edytuj</a></td>
+                <td class="list-menu__element"><a href="" class="link">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
