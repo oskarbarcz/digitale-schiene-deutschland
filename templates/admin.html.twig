@@ -1,0 +1,16 @@
+{% trans_default_domain 'admin' %}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'admin.page-title'|trans}}{% endblock %}
+{% block body %}
+    <div class="admin-wrapper">
+        <div class="side-panel">
+            Panel boczny
+        </div>
+        <div class="admin-content">
+            <div class="admin-nav">
+                Nawigacja
+            </div>
+        </div>
+    </div>
+{% endblock %}
