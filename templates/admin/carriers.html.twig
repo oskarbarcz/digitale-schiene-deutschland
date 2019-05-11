@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+{% block admin_body %}
+    <h1 class="admin__title">Przewoźnicy</h1>
+    <table class="list-menu">
+        <tr class="list-menu__row list-menu__row--header">
+            <th class="list-menu__element list-menu__element--header">
+                ID
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                logo
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                Pełna nazwa
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                Nazwa skrócona
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                Kod IBAN
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                Strona WWW przewoźnika
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+                Kod rozkładowy
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+            </th>
+            <th class="list-menu__element list-menu__element--header">
+            </th>
+        </tr>
+        {% for carrier in carriers %}
+            <tr class="list-menu__row">
+                <th class="list-menu__element">{{carrier.ID}}</th>
+                <th class="list-menu__element">{{carrier.logoFilePath}}</th>
+                <th class="list-menu__element">{{carrier.fullName}}</th>
+                <th class="list-menu__element">{{carrier.shortName}}</th>
+                <th class="list-menu__element">{{carrier.countryIbanCode}}</th>
+                <th class="list-menu__element">{{carrier.website}}</th>
+                <th class="list-menu__element">{{carrier.shortcode}}</th>
+                <th class="list-menu__element">Edytuj</th>
+                <th class="list-menu__element">Usuń</th>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
